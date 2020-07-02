@@ -1,7 +1,6 @@
 {
   "name": "express-auth-526",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,5 +24,14 @@
     "passport-local": "^1.0.0",
     "pg": "^8.2.1",
     "sequelize": "^6.2.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nhvattum/Mix-It-Up-P2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nhvattum/Mix-It-Up-P2/issues"
+  },
+  "homepage": "https://github.com/Nhvattum/Mix-It-Up-P2#readme",
+  "description": ""
 }

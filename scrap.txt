@@ -1,0 +1,32 @@
+favorite
+---
+sequelize model:create --name favorite --attributes name:string,userId:integer
+
+
+ingredient
+---
+sequelize model:create --name ingredient --attributes name:string,pantryId:integer
+
+
+pantry
+---
+sequelize model:create --name pantry --attributes name:string,userId:integer
+
+
+usersFavorites
+---
+sequelize model:create --name usersFavorites --attributes userId:integer,favoriteId:integer
+
+
+usersPantries
+---
+sequelize model:create --name usersPantries --attributes userId:integer,pantryId:integer
+
+
+pantriesIngredients
+---
+sequelize model:create --name pantriesIngredients --attributes pantryId:integer,ingredientId:integer
+
+
+
+sequelize db:migrate
