@@ -1,4 +1,3 @@
-
 <h2>Search For Cocktails Here!</h2>
 
 <form action="/search" method="GET" >
@@ -13,6 +12,6 @@
 </form>
 
 <% cocktail.forEach(function(cocktail) { %>
-    <p> <img src= <%= cocktail.strDrinkThumb %>> </p>
-    <p> <%= cocktail.strDrink %> </p>
+    <img src="<%= cocktail.strDrinkThumb %>">
+    <p> <%= cocktail.strDrink %></p> 
 <% }) %>
