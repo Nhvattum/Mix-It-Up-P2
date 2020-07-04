@@ -4,11 +4,15 @@
 <form action="/search" method="GET" >
     <label for="filter">Search By:</label>
     <select name="filter" id="filter">
-        <option value="<% cocktails %>">Cocktail</option>
-        <option value="<% cocktails %>">Ingredient</option>
-        <option value="<% cocktails %>"> First Letter</option>
+        <option value="<% cocktail %>">Cocktail</option>
+        <option value="<% cocktail %>">Ingredient</option>
+        <option value="<% cocktail %>"> First Letter</option>
     </select>
     <input type="text" placeholder="Search" aria-label="Search" name="search">
     <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
 
+<% cocktail.forEach(function(cocktail) { %>
+    <p> <img src= <%= cocktail.strDrinkThumb %>> </p>
+    <p> <%= cocktail.strDrink %> </p>
+<% }) %>

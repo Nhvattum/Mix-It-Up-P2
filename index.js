@@ -59,18 +59,19 @@ app.get('/profile', isLoggedIn, function(req, res) {
 })
 
 app.get('/search', function(req, res) {
-    const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-    const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search
+    // const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
 
-    axios.get(randomCocktail).then(function(response) {
-        console.log(response)
-        let cocktail = response.data.drinks[0];
+    // axios.get(randomCocktail).then(function(response) {
+    //     console.log(response)
+    //     let cocktail = response.data.drinks[0];
         
     axios.get(byName).then(function(res2) {
         // console.log(res2.data)
         console.log(res2.data.drinks,'👅')
-    res.render('search', {cocktails: res2.data.drinks});
-    })
+        
+    res.render('search', {cocktail: res2.data.drinks});
+    // })
     })
 })
 
