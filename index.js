@@ -9,6 +9,7 @@ const passport = require('./config/ppConfig');
 const db = require('./models');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const axios = require('axios');
 
 
 // App Setup
@@ -57,8 +58,25 @@ app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile');
 })
 
+app.get('/search', function(req, res) {
+    const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search
+
+    axios.get(randomCocktail).then(function(response) {
+        console.log(response)
+        let cocktail = response.data.drinks[0];
+        
+    axios.get(byName).then(function(res2) {
+        // console.log(res2.data)
+        console.log(res2.data.drinks,'👅')
+    res.render('search', {cocktails: res2.data.drinks});
+    })
+    })
+})
+
 // include auth controller
 app.use('/auth', require('./controllers/auth'));
+
 
 // initialise app on Port
 app.listen(process.env.PORT || 3000, function() {

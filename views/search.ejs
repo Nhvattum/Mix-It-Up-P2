@@ -1,0 +1,14 @@
+
+<h2>Search For Cocktails Here!</h2>
+
+<form action="/search" method="GET" >
+    <label for="filter">Search By:</label>
+    <select name="filter" id="filter">
+        <option value="<% cocktails %>">Cocktail</option>
+        <option value="<% cocktails %>">Ingredient</option>
+        <option value="<% cocktails %>"> First Letter</option>
+    </select>
+    <input type="text" placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
+</form>
+
