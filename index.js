@@ -83,16 +83,16 @@ app.get('/search', function(req, res) {
 })
 
 // show individual drink page
-// app.get('/search/:id', function(req, res) {
-//     const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.params.strDrink;
+app.get('/search/:id', function(req, res) {
+    const byId = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + req.params.id;
         
-//     axios.get(byName).then(function(res2) {
-//         console.log(res2.data.drinks,'👅')
-//         let cocktail = res2.data.drinks
+    axios.get(byId).then(function(res2) {
+        console.log(res2.data.drinks,'👅')
+        // let details = res2.data.drinks
         
-//     res.render('search/show', {cocktail});
-//     }).catch(errorHandler);
-// })
+    res.render('search/show', {details: res2.data.drinks});
+    }).catch(errorHandler);
+})
 
 
 // POST to favorites
@@ -113,6 +113,17 @@ app.get('/favorites' ,function(req, res) {
         res.render('favorites/index', {fav: fav})
     }).catch(errorHandler);
 })
+
+// GET list of ingredients
+// app.get('/search', function(req, res) {
+//     const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
+        
+//     axios.get(byName).then(function(res1) {
+//         // console.log(res1.data.drinks,'👅')
+        
+//     res.render('search/search', {cocktail: res1.data.drinks});
+//     })
+// })
 
 
 // include auth controller
