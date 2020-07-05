@@ -11,7 +11,9 @@
     <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
 
-<% cocktail.forEach(function(cocktail) { %>
-    <img src="<%= cocktail.strDrinkThumb %>">
-    <p> <%= cocktail.strDrink %></p> 
-<% }) %>
+<% if (cocktail) { %>
+    <% cocktail.forEach(function(cocktail) { %>
+        <img src="<%= cocktail.strDrinkThumb %>">
+        <p> <%= cocktail.strDrink %> </p>
+    <% }) %>
+ <% } %>   

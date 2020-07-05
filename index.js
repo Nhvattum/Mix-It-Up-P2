@@ -51,29 +51,31 @@ app.use(function(req, res, next) {
 // ROUTES
 app.get('/', function(req, res) {
     //check to see if user is logged in
-    res.render('index');
+    const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+
+    axios.get(randomCocktail).then(function(response) {
+        // console.log(response)
+        
+    res.render('index', {random: response.data.drinks});
+    })
 })
+
 
 app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile');
 })
 
+// search page
 app.get('/search', function(req, res) {
-    // const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
-
-    // axios.get(randomCocktail).then(function(response) {
-    //     console.log(response)
-    //     let cocktail = response.data.drinks[0];
         
-    axios.get(byName).then(function(res2) {
-        // console.log(res2.data)
-        console.log(res2.data.drinks,'👅')
+    axios.get(byName).then(function(res1) {
+        console.log(res1.data.drinks,'👅')
         
-    res.render('search', {cocktail: res2.data.drinks});
-    // })
+    res.render('search', {cocktail: res1.data.drinks});
     })
 })
+
 
 // include auth controller
 app.use('/auth', require('./controllers/auth'));
