@@ -97,15 +97,28 @@ app.get('/search/:id', function(req, res) {
 
 // POST to favorites
 app.post('/favorites', function(req, res) {
+    console.log(req.body.cocktailId + "🚀")
+    console.log(req.body.cocktailName + "😆")
     db.favorite.findOrCreate({
         where: {
-          name: req.params.name
+            idDrink: req.body.cocktailId
+        },
+        defaults: {
+            name: req.params.cocktailName
         }
     }).then(([favorite, created]) => {
+        db.user.findOne({
+            where: {
+            id: req.user.id
+            }
+        }).then(user => {
+            user.addFavorite(favorite)
+
+        .then((favorite) => {
         res.redirect('favorites')
-        console.log(`🐶 ${favorite.name} was ${created ? 'created👍' : 'found🔎'}`)
+        })
     }).catch(errorHandler);
-})
+})})
 
 // GET all favorited cocktails
 app.get('/favorites' ,function(req, res) {
@@ -114,16 +127,32 @@ app.get('/favorites' ,function(req, res) {
     }).catch(errorHandler);
 })
 
+
+// GET individual favorite drink details
+app.get('/favorites/:id', function(req, res) {
+    const byId = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + req.params.id;
+        
+    axios.get(byId).then(function(res2) {
+        console.log(res2.data.drinks,'👅')
+        
+    res.render('favorites/show', {details: res2.data.drinks});
+    }).catch(errorHandler);
+})
+
+
 // GET list of ingredients
-// app.get('/search', function(req, res) {
-//     const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
+app.get('/ingredients', function(req, res) {
+    const byIngredient = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
         
-//     axios.get(byName).then(function(res1) {
-//         // console.log(res1.data.drinks,'👅')
-        
-//     res.render('search/search', {cocktail: res1.data.drinks});
-//     })
-// })
+    axios.get(byIngredient).then(function(ingredient) {
+        // console.log(ingredient.data.drinks,'👅')
+        let sortedIngredients = ingredient.data.drinks.map(ingredientObject => {
+            return ingredientObject.strIngredient1
+        }).sort();
+
+    res.render('ingredients/ingredients', {ingredient: sortedIngredients});
+    })
+})
 
 
 // include auth controller
