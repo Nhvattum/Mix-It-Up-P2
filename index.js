@@ -72,7 +72,7 @@ app.get('/search', function(req, res) {
     axios.get(byName).then(function(res1) {
         console.log(res1.data.drinks,'👅')
         
-    res.render('search', {cocktail: res1.data.drinks});
+    res.render('search/search', {cocktail: res1.data.drinks});
     })
 })
 
