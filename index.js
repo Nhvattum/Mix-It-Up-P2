@@ -76,6 +76,17 @@ app.get('/search', function(req, res) {
     })
 })
 
+// show individual drink page
+app.get('/search/:id', function(req, res) {
+    const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
+        
+    axios.get(byName).then(function(res2) {
+        console.log(res2.data.drinks,'👅')
+        
+    res.render('search/show', {cocktail: res2.data.drinks});
+    })
+})
+
 
 // include auth controller
 app.use('/auth', require('./controllers/auth'));

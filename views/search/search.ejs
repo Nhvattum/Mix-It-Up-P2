@@ -9,6 +9,6 @@
 <% if (cocktail) { %>
     <% cocktail.forEach(function(cocktail) { %>
         <img src="<%= cocktail.strDrinkThumb %>">
-        <p> <%= cocktail.strDrink %> </p>
+        <p><a href="/search/show/<%= cocktail.strDrink %>"> <%= cocktail.strDrink %> </a></p>
     <% }) %>
 <% } %>   
