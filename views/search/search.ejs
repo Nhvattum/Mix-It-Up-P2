@@ -11,7 +11,7 @@
         <div class="well">
             <img src="<%= cocktail.strDrinkThumb %>">
             <p><a href="/search/<%= cocktail.strDrink.toLowerCase() %>"> <%= cocktail.strDrink %> </a></p>
-            <form method="POST" action="/profile">
+            <form method="POST" action="/favorites">
                 <input hidden type="text" name="name" value="<%= cocktail.strDrink %>">
                 <button class="btn btn-primary" type="submit">Add to Favorites List</button>
             </form>

@@ -1,7 +1,7 @@
 <!DOCUTYPE html>
 <html>
     <head>
-        <title>Auth Boilerplate</title>
+        <title>Mix it Up</title>
     </head>
     <body>
         <header>
@@ -9,16 +9,16 @@
                 <% if (currentUser) { %>
                     <a href="/auth/logout">Logout</a>
                     <a href="/profile">Profile</a>
-                    <a href="/search">Search</a>
+                    <a href="/favorites">Favorites</a>
+                    <a href="/search">Search Cocktails</a>
                 <% } else { %>
                     <a href="/auth/register">Register</a>
                     <a href="/auth/login">Login</a>
-
                 <% } %>
             </nav>
         </header>
         <div class="container">
-            <h1> Authenticating Users 🐋</h1>
+            <h1> 🍸🍹 Mix it Up 🍹🍸</h1>
             <%- include('./partials/alerts') %>
             <%- body %>
         </div>
