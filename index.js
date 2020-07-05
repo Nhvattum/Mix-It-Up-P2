@@ -21,6 +21,12 @@ app.use(ejsLayouts);
 app.use(require('morgan')('dev'));
 app.use(helmet());
 
+// errorHandler
+const errorHandler = error => {
+    console.log('🔥🔥🔥🔥🔥🔥')
+    console.log(error)
+  }
+
 // create new instance of class Sequelize Store
 const sessionStore = new SequelizeStore({
     db: db.sequelize,
@@ -77,15 +83,35 @@ app.get('/search', function(req, res) {
 })
 
 // show individual drink page
-app.get('/search/:id', function(req, res) {
-    const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.params.strDrink;
+// app.get('/search/:id', function(req, res) {
+//     const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.params.strDrink;
         
-    axios.get(byName).then(function(res2) {
-        console.log(res2.data.drinks,'👅')
-        let cocktail = res2.data.drinks
+//     axios.get(byName).then(function(res2) {
+//         console.log(res2.data.drinks,'👅')
+//         let cocktail = res2.data.drinks
         
-    res.render('search/show', {cocktail});
-    })
+//     res.render('search/show', {cocktail});
+//     }).catch(errorHandler);
+// })
+
+
+// POST to favorites
+app.post('/favorites', function(req, res) {
+    db.favorite.findOrCreate({
+        where: {
+          name: req.params.name
+        }
+    }).then(([favorite, created]) => {
+        res.redirect('favorites')
+        console.log(`🐶 ${favorite.name} was ${created ? 'created👍' : 'found🔎'}`)
+    }).catch(errorHandler);
+})
+
+// GET all favorited cocktails
+app.get('/favorites' ,function(req, res) {
+    db.favorite.findAll().then(function(fav) {
+        res.render('favorites/index', {fav: fav})
+    }).catch(errorHandler);
 })
 
 

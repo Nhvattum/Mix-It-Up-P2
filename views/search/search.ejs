@@ -8,7 +8,13 @@
 
 <% if (cocktail) { %>
     <% cocktail.forEach(function(cocktail) { %>
-        <img src="<%= cocktail.strDrinkThumb %>">
-        <p><a href="/search/<%= cocktail.strDrink.toLowerCase() %>"> <%= cocktail.strDrink %> </a></p>
+        <div class="well">
+            <img src="<%= cocktail.strDrinkThumb %>">
+            <p><a href="/search/<%= cocktail.strDrink.toLowerCase() %>"> <%= cocktail.strDrink %> </a></p>
+            <form method="POST" action="/profile">
+                <input hidden type="text" name="name" value="<%= cocktail.strDrink %>">
+                <button class="btn btn-primary" type="submit">Add to Favorites List</button>
+            </form>
+        </div>
     <% }) %>
 <% } %>   
