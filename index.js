@@ -54,7 +54,7 @@ app.use(function(req, res, next) {
     next();
 })
 
-// ROUTES
+// ROUTES ---------------------------------------------------------------------------
 app.get('/', function(req, res) {
     //check to see if user is logged in
     const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
@@ -93,33 +93,6 @@ app.get('/search/:id', function(req, res) {
     res.render('search/show', {details: res2.data.drinks});
     }).catch(errorHandler);
 })
-
-
-// POST to favorites
-// app.post('/favorites', function(req, res) {
-//     // console.log(req.body.cocktailId + "🚀")
-//     // console.log(req.body.cocktailName + "😆")
-//     db.favorite.findOrCreate({
-//         where: {
-//             idDrink: req.body.cocktailId
-//         },
-//         defaults: {
-//             name: req.params.cocktailName
-//         }
-//     }).then(([favorite, created]) => {
-//         db.user.findOne({
-//             where: {
-//             id: req.user.id
-//             }
-//         }).then(user => {
-//             user.addFavorite(favorite)
-
-//         .then((favorite) => {
-//         res.redirect('favorites')
-//         })
-//     }).catch(errorHandler);
-// })
-// })
 
 
 // POST to favorites
@@ -162,6 +135,7 @@ app.get('/favorites/:id', function(req, res) {
 
 
 // GET list of ingredients
+// Erik helped me write the code to sort the results alphebetically, and I still don't 100% understand what it is doing
 app.get('/ingredients', function(req, res) {
     const byIngredient = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
         
@@ -185,7 +159,15 @@ app.post('/pantries', function(req, res) {
         }
     }).then(([pantry, created]) => {
         console.log(`🐶 ${pantry.name} was ${created ? 'created👍' : 'found🔎'}`)
-        res.render('pantries/new')
+        res.redirect('profile')
+    }).catch(errorHandler)
+})
+
+// GET profile
+app.get('/profile', function(req, res) {
+    db.pantry.findAll().then(function(pantry) {
+        console.log('found: ', pantry[1].name)
+        res.render('profile', {pantry: pantry})
     }).catch(errorHandler)
 })
 

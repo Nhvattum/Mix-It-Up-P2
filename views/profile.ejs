@@ -1,5 +1,18 @@
 <h2>Hi <%= currentUser.name %>. Welcome to the app!</h2>
 
-<h3>Your pantries and ingredients will be displayed here:</h3>
+<h3>Your pantries:</h3>
 
-<h4>Add a <a href="/pantries">new</a> Pantry!</h4>
+<% pantry.forEach(function(pantry) { %>
+    <div class="well">
+        <p><%= pantry.name %></p>
+    </div>
+<% }) %>
+
+
+<form method="POST" action="/pantries">
+    <div class="form-group">
+        <label for="pantryId">Pantry Name</label>
+        <input type="text" class="form-control" id="pantryId" name="pantryName">
+        <button class="btn btn-primary" type="submit">Create New Pantry</button>
+    </div>
+</form>

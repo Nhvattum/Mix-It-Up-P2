@@ -2,5 +2,11 @@
 <% console.log(ingredient) %>
 <% ingredient.forEach(function(ingredient) { %>
     <p> <%= ingredient%> </p>
-    <button class="btn btn-primary" type="submit">Add to Pantry</button>
+    <form method="POST" action="/favorites">
+        <label for="pantryName">Choose a Pantry:</label>
+        <select name="pantryName" id="pantryName">
+            <option value="  ">  </option>
+        </select>
+        <button class="btn btn-primary" type="submit">Add to Pantry</button>
+    </form>
 <% }) %>
