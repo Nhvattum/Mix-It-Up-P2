@@ -78,7 +78,7 @@ app.get('/search', function(req, res) {
     axios.get(byName).then(function(res1) {
         // console.log(res1.data.drinks,'👅')
         
-    res.render('search/search', {cocktail: res1.data.drinks});
+        res.render('search/search', {cocktail: res1.data.drinks});
     })
 })
 
@@ -177,9 +177,11 @@ app.get('/ingredients', function(req, res) {
 
 // POST new pantry
 app.post('/pantries', function(req, res) {
+    console.log(req.body.pantryName + '🐙')
     db.pantry.findOrCreate({
         where: {
-            name: req.body.pantryName
+            name: req.body.pantryName,
+            userId: req.user.id
         }
     }).then(([pantry, created]) => {
         console.log(`🐶 ${pantry.name} was ${created ? 'created👍' : 'found🔎'}`)
