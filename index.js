@@ -129,9 +129,9 @@ app.post('/favorites', function(req, res) {
 
     db.favorite.findOrCreate({
         where: {
-          name: req.params.name,
-          idDrink: req.params.cocktailId,
-          user: req.user.id
+          name: req.body.cocktailName,
+          idDrink: req.body.cocktailId,
+          userId: req.user.id
         }
     }).then(([favorite, created]) => {
         res.redirect('favorites')
@@ -154,9 +154,11 @@ app.get('/favorites/:id', function(req, res) {
     const byId = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + req.params.id;
         
     axios.get(byId).then(function(res2) {
-        console.log(res2.data.drinks,'👅')
-        
-    res.render('favorites/show', {details: res2.data.drinks});
+        // console.log(res2.data.drinks,'👅')
+        let details = res2.data.drinks
+        console.log(details + "🦷")
+
+    res.render('favorites/show', {details: details});
     }).catch(errorHandler);
 })
 
