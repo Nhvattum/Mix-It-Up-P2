@@ -2,7 +2,7 @@
     <h4>Your Favorite Cocktails</h4>
     <ul>
         <% fav.forEach(function(favorite) { %>
-            <li><a href="/favorites/<%= favorite.id %>"><%= favorite.name %></a></li>
+            <li><a href="/favorites/<%= favorite.idDrink %>"><%= favorite.name %></a></li>
         <% }) %>
     </ul>
 </div>

@@ -96,29 +96,50 @@ app.get('/search/:id', function(req, res) {
 
 
 // POST to favorites
+// app.post('/favorites', function(req, res) {
+//     // console.log(req.body.cocktailId + "🚀")
+//     // console.log(req.body.cocktailName + "😆")
+//     db.favorite.findOrCreate({
+//         where: {
+//             idDrink: req.body.cocktailId
+//         },
+//         defaults: {
+//             name: req.params.cocktailName
+//         }
+//     }).then(([favorite, created]) => {
+//         db.user.findOne({
+//             where: {
+//             id: req.user.id
+//             }
+//         }).then(user => {
+//             user.addFavorite(favorite)
+
+//         .then((favorite) => {
+//         res.redirect('favorites')
+//         })
+//     }).catch(errorHandler);
+// })
+// })
+
+
+// POST to favorites
 app.post('/favorites', function(req, res) {
     console.log(req.body.cocktailId + "🚀")
     console.log(req.body.cocktailName + "😆")
+
     db.favorite.findOrCreate({
         where: {
-            idDrink: req.body.cocktailId
-        },
-        defaults: {
-            name: req.params.cocktailName
+          name: req.params.name,
+          idDrink: req.params.cocktailId,
+          user: req.user.id
         }
     }).then(([favorite, created]) => {
-        db.user.findOne({
-            where: {
-            id: req.user.id
-            }
-        }).then(user => {
-            user.addFavorite(favorite)
-
-        .then((favorite) => {
         res.redirect('favorites')
-        })
+        console.log(`🐶 ${favorite.name} was ${created ? 'created👍' : 'found🔎'}`)
     }).catch(errorHandler);
-})})
+})
+
+
 
 // GET all favorited cocktails
 app.get('/favorites' ,function(req, res) {
@@ -154,9 +175,23 @@ app.get('/ingredients', function(req, res) {
     })
 })
 
+// POST new pantry
+app.post('/pantries', function(req, res) {
+    db.pantry.findOrCreate({
+        where: {
+            name: req.body.pantryName
+        }
+    }).then(([pantry, created]) => {
+        console.log(`🐶 ${pantry.name} was ${created ? 'created👍' : 'found🔎'}`)
+        res.render('pantries/new')
+    }).catch(errorHandler)
+})
+
 
 // include auth controller
 app.use('/auth', require('./controllers/auth'));
+
+// app.use('/search', require('./controllers/search'));
 
 
 // initialise app on Port
