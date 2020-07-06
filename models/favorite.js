@@ -2,7 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const favorite = sequelize.define('favorite', {
     name: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    idDrink: DataTypes.INTEGER
   }, {});
   favorite.associate = function(models) {
     // associations can be defined here

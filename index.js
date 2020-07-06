@@ -155,10 +155,8 @@ app.get('/favorites/:id', function(req, res) {
         
     axios.get(byId).then(function(res2) {
         // console.log(res2.data.drinks,'👅')
-        let details = res2.data.drinks
-        console.log(details + "🦷")
 
-    res.render('favorites/show', {details: details});
+        res.render('favorites/show', {details: res2.data.drinks[0]});
     }).catch(errorHandler);
 })
 
