@@ -66,9 +66,12 @@ app.get('/', function(req, res) {
     })
 })
 
-
+// GET profile
 app.get('/profile', isLoggedIn, function(req, res) {
-    res.render('profile');
+    db.pantry.findAll().then(function(pantry) {
+        console.log('found: 😓', pantry)
+        res.render('profile', {pantry: pantry})
+    }).catch(errorHandler)
 })
 
 // search page
@@ -164,12 +167,12 @@ app.post('/pantries', function(req, res) {
 })
 
 // GET profile
-app.get('/profile', function(req, res) {
-    db.pantry.findAll().then(function(pantry) {
-        console.log('found: ', pantry[1].name)
-        res.render('profile', {pantry: pantry})
-    }).catch(errorHandler)
-})
+// app.get('/profile', function(req, res) {
+//     db.pantry.findAll().then(function(pantry) {
+//         console.log('found: 😓', pantry)
+//         res.render('profile', {pantry: pantry})
+//     }).catch(errorHandler)
+// })
 
 
 // include auth controller
