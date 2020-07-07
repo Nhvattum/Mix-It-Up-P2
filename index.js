@@ -68,13 +68,17 @@ app.get('/', function(req, res) {
 
 // GET profile
 app.get('/profile', isLoggedIn, function(req, res) {
-    db.pantry.findAll().then(function(pantry) {
+    db.pantry.findAll({
+        where: {
+            userId: req.user.id
+        }
+    }).then(function(pantry) {
         console.log('found: 😓', pantry)
         res.render('profile', {pantry: pantry})
     }).catch(errorHandler)
 })
 
-// search page
+// GET search page
 app.get('/search', function(req, res) {
     const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
         
@@ -138,7 +142,7 @@ app.get('/favorites/:id', function(req, res) {
 
 
 // GET list of ingredients
-// Erik helped me write the code to sort the results alphebetically, and I still don't 100% understand what it is doing
+// Sources: Erik helped me write the code to sort the results alphebetically, and I still don't 100% understand how map is working
 app.get('/ingredients', function(req, res) {
     const byIngredient = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
         
@@ -148,8 +152,15 @@ app.get('/ingredients', function(req, res) {
             return ingredientObject.strIngredient1
         }).sort();
 
-    res.render('ingredients/ingredients', {ingredient: sortedIngredients});
-    })
+        db.pantry.findAll({
+            where: {
+                userId: req.user.id
+            }
+        }).then(function(pantry) {
+        res.render('ingredients/ingredients', {ingredient: sortedIngredients, pantry});
+        console.log('found: 😓', pantry)
+        })
+    }).catch(errorHandler)
 })
 
 // POST new pantry
@@ -166,13 +177,7 @@ app.post('/pantries', function(req, res) {
     }).catch(errorHandler)
 })
 
-// GET profile
-// app.get('/profile', function(req, res) {
-//     db.pantry.findAll().then(function(pantry) {
-//         console.log('found: 😓', pantry)
-//         res.render('profile', {pantry: pantry})
-//     }).catch(errorHandler)
-// })
+// POST new ingredients
 
 
 // include auth controller
