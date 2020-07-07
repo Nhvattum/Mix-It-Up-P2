@@ -10,10 +10,12 @@ const db = require('./models');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const axios = require('axios');
+const methodOverride = require('method-override');
 
 
 // App Setup
 const app = Express();
+app.use(methodOverride('_method'));
 app.use(Express.urlencoded({ extended: false}));
 app.use(Express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -72,8 +74,8 @@ app.get('/profile', isLoggedIn, function(req, res) {
         where: {userId: req.user.id},
         include: [db.ingredient]
     }).then(function(pantry) { 
-        console.log(pantry[2].ingredients, "☕️🐋")       
-        console.log('found: 😓', pantry)
+        // console.log(pantry[2].ingredients, "☕️🐋")       
+        // console.log('found: 😓', pantry)
         res.render('profile', {pantry: pantry})
     }).catch(errorHandler)
 })
@@ -94,7 +96,7 @@ app.get('/search/:id', function(req, res) {
     const byId = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + req.params.id;
         
     axios.get(byId).then(function(res2) {
-        console.log(res2.data.drinks,'👅')
+        // console.log(res2.data.drinks,'👅')
         // let details = res2.data.drinks
         
     res.render('search/show', {details: res2.data.drinks});
@@ -104,8 +106,8 @@ app.get('/search/:id', function(req, res) {
 
 // POST to favorites
 app.post('/favorites', function(req, res) {
-    console.log(req.body.cocktailId + "🚀")
-    console.log(req.body.cocktailName + "😆")
+    // console.log(req.body.cocktailId + "🚀")
+    // console.log(req.body.cocktailName + "😆")
 
     db.favorite.findOrCreate({
         where: {
@@ -115,7 +117,7 @@ app.post('/favorites', function(req, res) {
         }
     }).then(([favorite, created]) => {
         res.redirect('favorites')
-        console.log(`🐶 ${favorite.name} was ${created ? 'created👍' : 'found🔎'}`)
+        // console.log(`🐶 ${favorite.name} was ${created ? 'created👍' : 'found🔎'}`)
     }).catch(errorHandler);
 })
 
@@ -158,22 +160,40 @@ app.get('/ingredients', function(req, res) {
             }
         }).then(function(pantry) {
         res.render('ingredients/ingredients', {ingredient: sortedIngredients, pantry});
-        console.log('found: 😓', pantry)
+        // console.log('found: 😓', pantry)
         })
     }).catch(errorHandler)
 })
 
 // POST new pantry
 app.post('/pantries', function(req, res) {
-    console.log(req.body.pantryName + '🐙')
-    db.pantry.findOrCreate({
+    // console.log(req.body.pantryName + '🐙')
+    db.user.findOne({
         where: {
-            name: req.body.pantryName,
+            id: req.user.id
+        }
+    }).then(user => {
+        db.pantry.findOrCreate({
+            where: {
+                name: req.body.pantryName,
+                userId: user.id
+            }
+        }).then(([pantry, created]) => {
+            // console.log(`🐶 ${pantry.name} was ${created ? 'created👍' : 'found🔎'}`)
+            res.redirect('profile')
+    })
+    }).catch(errorHandler)
+})
+
+// DELETE a pantry
+app.delete('/pantries/:name', function(req, res) {
+    db.pantry.destroy({
+        where: {
+            name: req.params.name,
             userId: req.user.id
         }
-    }).then(([pantry, created]) => {
-        // console.log(`🐶 ${pantry.name} was ${created ? 'created👍' : 'found🔎'}`)
-        res.redirect('profile')
+    }).then(function() {
+        res.redirect('/profile')
     }).catch(errorHandler)
 })
 
@@ -191,7 +211,7 @@ app.post('/ingredients', function(req, res) {
             pantryId: req.body.pantryName
         }
     }).then(([ingredient, created]) => {
-        console.log(`🐶 ${ingredient.name} was ${created ? 'created👍' : 'found🔎'}`)
+        // console.log(`🐶 ${ingredient.name} was ${created ? 'created👍' : 'found🔎'}`)
         pantry.addIngredient(ingredient)
         res.redirect('ingredients')
     })
