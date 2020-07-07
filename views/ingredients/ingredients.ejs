@@ -2,13 +2,14 @@
 <% console.log(ingredient) %>
 <% ingredient.forEach(function(ingredient) { %>
     <p> <%= ingredient %> </p>
-    <form method="POST" action="/favorites">
+    <form method="POST" action="/ingredients">
         <label for="pantryName">Choose a Pantry:</label>
         <select name="pantryName" id="pantryName">
             <% pantry.forEach(function(pantry) { %>
-                <option value="<%= pantry.name %>"> <%= pantry.name %> </option>
+                <option value="<%= pantry.id %>"> <%= pantry.name %> </option>
             <% }) %>
         </select>
+        <input hidden type="text" name="ingredientName" value="<%= ingredient %>">
         <button class="btn btn-primary" type="submit">Add to Pantry</button>
     </form>
 <% }) %>

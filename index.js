@@ -172,13 +172,24 @@ app.post('/pantries', function(req, res) {
             userId: req.user.id
         }
     }).then(([pantry, created]) => {
-        console.log(`🐶 ${pantry.name} was ${created ? 'created👍' : 'found🔎'}`)
+        // console.log(`🐶 ${pantry.name} was ${created ? 'created👍' : 'found🔎'}`)
         res.redirect('profile')
     }).catch(errorHandler)
 })
 
 // POST new ingredients
-
+app.post('/ingredients', function(req, res) {
+    console.log(req.body.ingredient + '🐙')
+    db.ingredient.findOrCreate({
+        where: {
+            name: req.body.ingredientName,
+            pantryId: req.body.pantryName
+        }
+    }).then(([ingredient, created]) => {
+        console.log(`🐶 ${ingredient.name} was ${created ? 'created👍' : 'found🔎'}`)
+        res.redirect('ingredients')
+    }).catch(errorHandler)
+})
 
 // include auth controller
 app.use('/auth', require('./controllers/auth'));
