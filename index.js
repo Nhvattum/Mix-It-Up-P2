@@ -70,8 +70,9 @@ app.get('/', function(req, res) {
 app.get('/profile', isLoggedIn, function(req, res) {
     db.pantry.findAll({
         where: {userId: req.user.id},
-        include: [{ingredient}]
-    }).then(function(pantry) {        
+        include: [db.ingredient]
+    }).then(function(pantry) { 
+        console.log(pantry[2].ingredients, "☕️🐋")       
         console.log('found: 😓', pantry)
         res.render('profile', {pantry: pantry})
     }).catch(errorHandler)
@@ -178,7 +179,12 @@ app.post('/pantries', function(req, res) {
 
 // POST new ingredients
 app.post('/ingredients', function(req, res) {
-    console.log(req.body.ingredient + '🐙')
+    // console.log(req.body.ingredient + '🐙')
+    db.pantry.findOne({
+        where: {
+            id: req.body.pantryName
+        }
+    }).then(pantry => {
     db.ingredient.findOrCreate({
         where: {
             name: req.body.ingredientName,
@@ -186,7 +192,9 @@ app.post('/ingredients', function(req, res) {
         }
     }).then(([ingredient, created]) => {
         console.log(`🐶 ${ingredient.name} was ${created ? 'created👍' : 'found🔎'}`)
+        pantry.addIngredient(ingredient)
         res.redirect('ingredients')
+    })
     }).catch(errorHandler)
 })
 

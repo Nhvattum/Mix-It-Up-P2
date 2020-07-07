@@ -5,8 +5,8 @@
 <% pantry.forEach(function(pantry) { %>
     <div class="well">
         <p><%= pantry.name.toUpperCase() %></p>
-        <ul> <% pantry.ingredient.forEach(function(ingredient) { %>
-            <% where: { pantryId: req.pantry.id } %>
+        <ul> <% pantry.ingredients.forEach(function(ingredient) { %>
+            
             <li> <%= ingredient.name %> </li>
             <% }) %>
         </ul>
