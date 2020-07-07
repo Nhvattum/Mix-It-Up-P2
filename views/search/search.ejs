@@ -10,7 +10,7 @@
     <% cocktail.forEach(function(cocktail) { %>
         <div class="well">
             <img src="<%= cocktail.strDrinkThumb %>">
-            <p><a href="/search/<%= cocktail.idDrink %>"><%= cocktail.idDrink %> <%= cocktail.strDrink %> </a></p>
+            <p><a href="/search/<%= cocktail.idDrink %>"> <%= cocktail.strDrink %> </a></p>
             <form method="POST" action="/favorites">
                 <input hidden type="text" name="cocktailId" value="<%= cocktail.idDrink %>">
                 <input hidden type="text" name="cocktailName" value="<%= cocktail.strDrink %>">

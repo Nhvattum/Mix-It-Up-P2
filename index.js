@@ -69,10 +69,9 @@ app.get('/', function(req, res) {
 // GET profile
 app.get('/profile', isLoggedIn, function(req, res) {
     db.pantry.findAll({
-        where: {
-            userId: req.user.id
-        }
-    }).then(function(pantry) {
+        where: {userId: req.user.id},
+        include: [{ingredient}]
+    }).then(function(pantry) {        
         console.log('found: 😓', pantry)
         res.render('profile', {pantry: pantry})
     }).catch(errorHandler)

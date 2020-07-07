@@ -6,7 +6,7 @@
         <label for="pantryName">Choose a Pantry:</label>
         <select name="pantryName" id="pantryName">
             <% pantry.forEach(function(pantry) { %>
-                <option value="<%= pantry.id %>"> <%= pantry.name %> </option>
+                <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
             <% }) %>
         </select>
         <input hidden type="text" name="ingredientName" value="<%= ingredient %>">

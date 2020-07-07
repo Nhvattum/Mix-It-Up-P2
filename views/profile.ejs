@@ -4,7 +4,12 @@
 
 <% pantry.forEach(function(pantry) { %>
     <div class="well">
-        <p><%= pantry.name %></p>
+        <p><%= pantry.name.toUpperCase() %></p>
+        <ul> <% pantry.ingredient.forEach(function(ingredient) { %>
+            <% where: { pantryId: req.pantry.id } %>
+            <li> <%= ingredient.name %> </li>
+            <% }) %>
+        </ul>
     </div>
 <% }) %>
 
