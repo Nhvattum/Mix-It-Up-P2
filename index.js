@@ -88,14 +88,15 @@ app.get('/search', function(req, res) {
 
     if (req.query) {
         axios.get(byName).then(function(res1) {
-            console.log(res1.data.drinks,'👅')
+            // console.log(res1.data.drinks,'👅')
         })
         db.pantry.findAll({
             where: {userId: req.user.id},
             include: [db.ingredient]
-        }).then(function(pantry){ console.log(pantry.pantriesIngredients + "🤬")
+        }).then(function(pantry){ 
+            // console.log(pantry.pantriesIngredients + "🤬")
             axios.get(byPantry).then(function(res2) {
-                console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
+                // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
                 res.render('search/search', {cocktail: res1.data.drinks, pantry, searchPantry: res2.data.drinks});
             })
         }).catch(errorHandler)
@@ -106,7 +107,7 @@ app.get('/search', function(req, res) {
         include: [db.ingredient]
     }).then(function(pantry){
         axios.get(byPantry).then(function(res2) {
-            console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
+            // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
             res.render('search/search', { pantry, searchPantry: res2.data.drinks});
         })
     }).catch(errorHandler)
@@ -169,7 +170,7 @@ app.get('/favorites/:id', function(req, res) {
     axios.get(byId).then(function(res2) {
         // console.log(res2.data.drinks,'👅')
 
-        res.render('favorites/show', {details: res2.data.drinks[0]});
+        res.render('favorites/show', {details: res2.data.drinks});
     }).catch(errorHandler);
 })
 
