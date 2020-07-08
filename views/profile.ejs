@@ -11,7 +11,8 @@
         <ul> <% pantry.ingredients.forEach(function(ingredient) { %>
             <li> <%= ingredient.name %> </li>
             <form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
-                <input type="submit" value="Delete <%=ingredient.name %>">
+                <input type="hidden" value="<%= pantry.id %>" name="pantryId">
+                <input type="submit" value="Delete <%= ingredient.name %>">
             </form>
             <% }) %>
         </ul>

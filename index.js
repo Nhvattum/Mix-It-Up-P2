@@ -212,7 +212,7 @@ app.delete('/ingredients/:name', function(req, res) {
     db.ingredient.destroy({
         where: {
             name: req.params.name,
-            pantryId: req.pantry.id
+            pantryId: req.body.pantryId
         }
     }).then(function() {
         res.redirect('/profile')

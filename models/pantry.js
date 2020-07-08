@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   pantry.associate = function(models) {
     // associations can be defined here
-    models.pantry.belongsToMany(models.user, {through: 'usersPantries'})
+    models.pantry.belongsTo(models.user)
     models.pantry.belongsToMany(models.ingredient, {through: 'pantriesIngredients'})
   };
   return pantry;
