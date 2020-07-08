@@ -11,6 +11,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const axios = require('axios');
 const methodOverride = require('method-override');
+const key = process.env.MY_KEY;
 
 
 // App Setup
@@ -163,7 +164,6 @@ app.get('/ingredients', function(req, res) {
         let sortedIngredients = ingredient.data.drinks.map(ingredientObject => {
             return ingredientObject.strIngredient1
         }).sort();
-
         db.pantry.findAll({
             where: {
                 userId: req.user.id

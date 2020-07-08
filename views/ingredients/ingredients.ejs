@@ -2,6 +2,8 @@
 <% console.log(ingredient) %>
 <% ingredient.forEach(function(ingredient) { %>
     <p> <%= ingredient %> </p>
+    <% console.log(ingredient +"🍿🍿🍿🍿🍿🍿🍿🍿🍿") %>
+    <img src=`https://www.thecocktaildb.com/images/ingredients/${<%=ingredient%>}-Medium.png`>
     <form method="POST" action="/ingredients">
         <label for="pantryName">Choose a Pantry:</label>
         <select name="pantryName" id="pantryName">
