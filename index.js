@@ -103,7 +103,6 @@ app.get('/search/:id', function(req, res) {
     }).catch(errorHandler);
 })
 
-
 // POST to favorites
 app.post('/favorites', function(req, res) {
     // console.log(req.body.cocktailId + "🚀")
@@ -121,6 +120,17 @@ app.post('/favorites', function(req, res) {
     }).catch(errorHandler);
 })
 
+// DELETE a pantry
+app.delete('/favorites/:idDrink', function(req, res) {
+    db.favorite.destroy({
+        where: {
+            idDrink: req.params.idDrink,
+            userId: req.user.id
+        }
+    }).then(function() {
+        res.redirect('/favorites')
+    }).catch(errorHandler)
+})
 
 
 // GET all favorited cocktails
@@ -191,6 +201,18 @@ app.delete('/pantries/:name', function(req, res) {
         where: {
             name: req.params.name,
             userId: req.user.id
+        }
+    }).then(function() {
+        res.redirect('/profile')
+    }).catch(errorHandler)
+})
+
+// DELETE an ingredient
+app.delete('/ingredients/:name', function(req, res) {
+    db.ingredient.destroy({
+        where: {
+            name: req.params.name,
+            pantryId: req.pantry.id
         }
     }).then(function() {
         res.redirect('/profile')

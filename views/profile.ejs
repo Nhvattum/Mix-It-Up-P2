@@ -10,6 +10,9 @@
         </form>
         <ul> <% pantry.ingredients.forEach(function(ingredient) { %>
             <li> <%= ingredient.name %> </li>
+            <form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
+                <input type="submit" value="Delete <%=ingredient.name %>">
+            </form>
             <% }) %>
         </ul>
     </div>
