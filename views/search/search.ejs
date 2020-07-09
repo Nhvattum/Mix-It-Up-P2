@@ -1,11 +1,13 @@
   
-<h2>Search For Cocktails Here!</h2>
+<h3>Search For Cocktails Here!</h3>
 
-<form action="/search" method="GET" >
-    <label for="filter">Search Cocktails:</label>
-    <input type="text" placeholder="Search" aria-label="Search" name="search">
-    <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
-</form>
+<div class="well">
+    <form action="/search" method="GET" >
+        <label for="filter">Search Cocktails:</label>
+        <input type="text" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
+    </form>
+</div>
 
 <% if (cocktail) { %>
     <% cocktail.forEach(function(cocktail) { %>
