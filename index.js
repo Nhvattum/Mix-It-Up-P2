@@ -60,7 +60,7 @@ app.use(function(req, res, next) {
 // ROUTES ---------------------------------------------------------------------------
 app.get('/', function(req, res) {
     //check to see if user is logged in
-    const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    const randomCocktail = `https://www.thecocktaildb.com/api/json/v2/${key}/random.php`;
 
     axios.get(randomCocktail).then(function(response) {
         // console.log(response)
@@ -84,7 +84,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
 // GET search page
 // SOURCE https://www.developintelligence.com/blog/2016/02/replace-spaces-underscores-javascript/
 app.get('/search', function(req, res) {
-    const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
+    const byName = `https://www.thecocktaildb.com/api/json/v2/${key}/search.php?s=${req.query.search}`;
         
     axios.get(byName).then(function(res1) {
         // console.log(res1.data.drinks,'👅')
@@ -114,7 +114,7 @@ app.get('/search/pantry', function(req, res) {
         }).then(function(pantry){
             axios.get(byPantry).then(function(res2) {
                 console.log("🎉🎉🎉🎉🎉🎉🎉🎉")
-                res.render('pantries/searchPantry', {pantry, searchPantry: res2.data.drinks});
+                res.render('pantries/searchPantry', {pantry, pantryCocktails: res2.data.drinks});
                 // res.send(pantry)
             })
         }).catch(errorHandler)
@@ -134,7 +134,7 @@ app.get('/search/pantry', function(req, res) {
 
 // show individual drink page
 app.get('/search/drinks/:id', function(req, res) {
-    const byId = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + req.params.id;
+    const byId = `https://www.thecocktaildb.com/api/json/v2/${key}/lookup.php?i=${req.params.id}`;
         
     axios.get(byId).then(function(res2) {
         // console.log(res2.data.drinks,'👅')
@@ -184,7 +184,7 @@ app.get('/favorites' ,function(req, res) {
 
 // GET individual favorite drink details
 app.get('/favorites/:id', function(req, res) {
-    const byId = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + req.params.id;
+    const byId = `https://www.thecocktaildb.com/api/json/v2/${key}/lookup.php?i=${req.params.id}`;
         
     axios.get(byId).then(function(res2) {
         // console.log(res2.data.drinks,'👅')
@@ -197,7 +197,7 @@ app.get('/favorites/:id', function(req, res) {
 // GET list of ingredients
 // Sources: Erik helped me write the code to sort the results alphebetically, and I still don't 100% understand how map is working
 app.get('/ingredients', function(req, res) {
-    const byIngredient = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
+    const byIngredient = `https://www.thecocktaildb.com/api/json/v2/${key}/list.php?i=list`;
         
     axios.get(byIngredient).then(function(ingredient) {
         // console.log(ingredient.data.drinks,'👅')

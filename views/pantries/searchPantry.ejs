@@ -16,3 +16,16 @@
     <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
 
+<% if (pantryCocktails) { %>
+    <% pantryCocktails.forEach(function(pantryCocktail) { %>
+        <div class="well">
+            <img src="<%= pantryCocktail.strDrinkThumb %>">
+            <p><a href="/search/drinks/<%= pantryCocktail.idDrink %>"> <%= pantryCocktail.strDrink %> </a></p>
+            <form method="POST" action="/favorites">
+                <input hidden type="text" name="cocktailId" value="<%= cocktail.idDrink %>">
+                <input hidden type="text" name="cocktailName" value="<%= cocktail.strDrink %>">
+                <button class="btn btn-primary" type="submit">Add to Favorites List</button>
+            </form>
+        </div>
+    <% }) %>
+<% } %>   
