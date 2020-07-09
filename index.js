@@ -82,26 +82,42 @@ app.get('/profile', isLoggedIn, function(req, res) {
 })
 
 // GET search page
+// SOURCE https://www.developintelligence.com/blog/2016/02/replace-spaces-underscores-javascript/
 app.get('/search', function(req, res) {
-    const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
-    const byPantry = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=`;
-
     if (req.query) {
+        
+        const byName = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + req.query.search;
+        
         axios.get(byName).then(function(res1) {
             // console.log(res1.data.drinks,'👅')
+            db.pantry.findAll({
+                where: {userId: req.user.id},
+                include: [db.ingredient]
+            }).then(function(pantry){ 
+                // console.log(pantry.pantriesIngredients + "🤬")
+                axios.get(byPantry).then(function(res2) {
+                    // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
+                    res.render('search/search', {cocktail: res1.data.drinks, pantry, searchPantry: res2.data.drinks});
+                    // res.send(pantry)
+                })
+            }).catch(errorHandler)
         })
-        db.pantry.findAll({
-            where: {userId: req.user.id},
-            include: [db.ingredient]
-        }).then(function(pantry){ 
-            // console.log(pantry.pantriesIngredients + "🤬")
-            axios.get(byPantry).then(function(res2) {
-                // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
-                res.render('search/search', {cocktail: res1.data.drinks, pantry, searchPantry: res2.data.drinks});
-            })
-        }).catch(errorHandler)
-    
     }
+    
+
+// GET psearch
+let i = 0
+    let search = req.query.ingredientName;
+    for(i; i < search.length; i++) {
+        search[i] = search[i].replace(" ", "_");
+    }
+
+    console.log(search, "🎭🎭🎭🎭🎭")
+
+    let ingredientList = search.join(",");
+
+    const byPantry = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=${ingredientList}`;
+
     db.pantry.findAll({
         where: {userId: req.user.id},
         include: [db.ingredient]
@@ -109,6 +125,7 @@ app.get('/search', function(req, res) {
         axios.get(byPantry).then(function(res2) {
             // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
             res.render('search/search', { pantry, searchPantry: res2.data.drinks});
+            // res.send(pantry)
         })
     }).catch(errorHandler)
 })

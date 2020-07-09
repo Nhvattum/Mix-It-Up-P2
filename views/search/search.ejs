@@ -1,3 +1,4 @@
+  
 <h2>Search For Cocktails Here!</h2>
 
 <form action="/search" method="GET" >
@@ -6,22 +7,7 @@
     <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
 
-<form action="/search" method="GET" >
-    <label for="filter">Search Cocktails By Pantry Ingredients:</label>
-    <label for="pantryName">Choose a Pantry:</label>
-        <select name="pantryName" id="pantryName">
-        <% pantry.forEach(function(pantry) { %>
-            <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
-        <% }) %>
-        </select>
-    <% console.log("🤓🤓🤓🤓🤓🤓🤓" + pantry[0] + "🤓🤓🤓🤓🤓🤓🤓") %>
-    <% pantry.ingredients.forEach(function(ingredient) { %>
-        <input hidden type="text" name="ingredientName" value="<%= ingredient %>">
-    <% }) %>
-    <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
-</form>
-
-<!-- <% if (cocktail) { %>
+<% if (cocktail) { %>
     <% cocktail.forEach(function(cocktail) { %>
         <div class="well">
             <img src="<%= cocktail.strDrinkThumb %>">
@@ -33,4 +19,4 @@
             </form>
         </div>
     <% }) %>
-<% } %>    -->
+<% } %>   

@@ -1,11 +1,10 @@
-
-<% console.log(ingredient) %>
-<h3>Your pantries:</h3>
+<!-- <% console.log(ingredient) %> -->
+<h3>Ingredients:</h3>
 
 <% ingredient.forEach(function(ingredient) { %>
     <div class="well">
-        <p> <%= ingredient %> </p>
-        <% console.log(ingredient +"🍿🍿🍿🍿🍿🍿🍿🍿🍿") %>
+        <h3> <%= ingredient %> </h3>
+        <!-- <% console.log(ingredient +"🍿🍿🍿🍿🍿🍿🍿🍿🍿") %> -->
         <img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-Medium.png">
         
         <form method="POST" action="/ingredients">
