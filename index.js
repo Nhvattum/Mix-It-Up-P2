@@ -90,37 +90,50 @@ app.get('/search', function(req, res) {
         // console.log(res1.data.drinks,'👅')
         
         res.render('search/search', {cocktail: res1.data.drinks});
-    })
+    }).catch(errorHandler);
 })
     
+// GET searchPantry
+app.get('/search/pantry', function(req, res) {
+    if (req.query.ingredientName) {
+        let i = 0
+        let search = req.query.ingredientName;
+        for(i; i < search.length; i++) {
+            search[i] = search[i].replace(" ", "_");
+        }
+        
+        let ingredientList = search.join(",");
+        
+        console.log(ingredientList, "🎭🎭🎭🎭🎭")
+        
+        const byPantry = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=${ingredientList}`;
+        db.pantry.findAll({
+        where: {userId: req.user.id},
+        include: [db.ingredient]
 
-// GET psearch
-// let i = 0
-//     let search = req.query.ingredientName;
-//     for(i; i < search.length; i++) {
-//         search[i] = search[i].replace(" ", "_");
-//     }
+        }).then(function(pantry){
+            axios.get(byPantry).then(function(res2) {
+                console.log("🎉🎉🎉🎉🎉🎉🎉🎉")
+                res.render('pantries/searchPantry', {pantry, searchPantry: res2.data.drinks});
+                // res.send(pantry)
+            })
+        }).catch(errorHandler)
+    } else {
+        db.pantry.findAll({
+            where: {userId: req.user.id},
+            include: [db.ingredient]
+        }).then(function(pantry){
+                // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
+                res.render('pantries/searchPantry', {pantry});
+                // res.send(pantry)
+        
+        }).catch(errorHandler)
+    }
+})
 
-//     console.log(search, "🎭🎭🎭🎭🎭")
-
-//     let ingredientList = search.join(",");
-
-//     const byPantry = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=${ingredientList}`;
-
-//     db.pantry.findAll({
-//         where: {userId: req.user.id},
-//         include: [db.ingredient]
-//     }).then(function(pantry){
-//         axios.get(byPantry).then(function(res2) {
-//             // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
-//             res.render('search/search', { pantry, searchPantry: res2.data.drinks});
-//             // res.send(pantry)
-//         })
-//     }).catch(errorHandler)
-// })
 
 // show individual drink page
-app.get('/search/:id', function(req, res) {
+app.get('/search/drinks/:id', function(req, res) {
     const byId = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + req.params.id;
         
     axios.get(byId).then(function(res2) {

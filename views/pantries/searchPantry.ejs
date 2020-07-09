@@ -1,16 +1,18 @@
-<p>pantries will be displayed here</p>
+<p>Search by Pantry Ingredients</p>
 
-<form action="/search" method="GET" >
+<form action="/search/pantry" method="GET" >
     <label for="filter">Search Cocktails By Pantry Ingredients:</label>
     <label for="pantryName">Choose a Pantry:</label>
         <select name="pantryName" id="pantryName">
+            
         <% pantry.forEach(function(pantry) { %>
             <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
         <% }) %>
         </select>
-        <% console.log("🤓🤓🤓🤓🤓🤓🤓" + pantry[1].ingredients + "🤓🤓🤓🤓🤓🤓🤓") %>
+        
         <% pantry[0].ingredients.forEach(function(ingredient) { %>
         <input hidden type="text" name="ingredientName" value="<%= ingredient.name %>">
     <% }) %>
     <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
+
