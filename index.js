@@ -113,8 +113,9 @@ app.get('/search/pantry', function(req, res) {
 
         }).then(function(pantry){
             axios.get(byPantry).then(function(res2) {
-                console.log("🎉🎉🎉🎉🎉🎉🎉🎉")
-                res.render('pantries/searchPantry', {pantry, pantryCocktails: res2.data.drinks});
+                // console.log("🎉🎉🎉🎉🎉🎉🎉🎉")
+                console.log("backend list 🚜🚜🚜🚜🚜🚜", res2.data.drinks)
+                res.render('pantries/searchPantry', {pantry, pantryCocktail: res2.data.drinks});
                 // res.send(pantry)
             })
         }).catch(errorHandler)
@@ -124,7 +125,8 @@ app.get('/search/pantry', function(req, res) {
             include: [db.ingredient]
         }).then(function(pantry){
                 // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
-                res.render('pantries/searchPantry', {pantry});
+                let pantryCocktail = [];
+                res.render('pantries/searchPantry', {pantry, pantryCocktail});
                 // res.send(pantry)
         
         }).catch(errorHandler)

@@ -4,20 +4,20 @@
     <label for="filter">Search Cocktails By Pantry Ingredients:</label>
     <label for="pantryName">Choose a Pantry:</label>
         <select name="pantryName" id="pantryName">
-            
-        <% pantry.forEach(function(pantry) { %>
-            <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
-        <% }) %>
+            <% pantry.forEach(function(pantry) { %>
+                <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
+                    
+                <% pantry.ingredients.forEach(function(ingredient) { %>
+                        <input hidden type="text" value="<%= ingredient.name %>" name="ingredientName">
+                    <% }) %>
+            <% }) %>
         </select>
-        
-        <% pantry[0].ingredients.forEach(function(ingredient) { %>
-        <input hidden type="text" name="ingredientName" value="<%= ingredient.name %>">
-    <% }) %>
     <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
 
-<% if (pantryCocktails) { %>
-    <% pantryCocktails.forEach(function(pantryCocktail) { %>
+<% if (typeof pantryCocktail == Array) { %>
+    <% console.log("🎯🎯🎯🎯🎯🎯🎯", pantryCocktail) %>
+    <% pantryCocktail.forEach(function(pantryCocktail) { %>
         <div class="well">
             <img src="<%= pantryCocktail.strDrinkThumb %>">
             <p><a href="/search/drinks/<%= pantryCocktail.idDrink %>"> <%= pantryCocktail.strDrink %> </a></p>
