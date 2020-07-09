@@ -1,18 +1,22 @@
 
 <% console.log(ingredient) %>
-<ul></ul><% ingredient.forEach(function(ingredient) { %>
-    <p> <%= ingredient %> </p>
-    <% console.log(ingredient +"🍿🍿🍿🍿🍿🍿🍿🍿🍿") %>
-    <img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-Medium.png">
-    
-    <form method="POST" action="/ingredients">
-        <label for="pantryName">Choose a Pantry:</label>
-        <select name="pantryName" id="pantryName">
-            <% pantry.forEach(function(pantry) { %>
-                <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
-            <% }) %>
-        </select>
-        <input hidden type="text" name="ingredientName" value="<%= ingredient %>">
-        <button class="btn btn-primary" type="submit">Add to Pantry</button>
-    </form>
+<h3>Your pantries:</h3>
+
+<% ingredient.forEach(function(ingredient) { %>
+    <div class="well">
+        <p> <%= ingredient %> </p>
+        <% console.log(ingredient +"🍿🍿🍿🍿🍿🍿🍿🍿🍿") %>
+        <img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-Medium.png">
+        
+        <form method="POST" action="/ingredients">
+            <label for="pantryName">Choose a Pantry:</label>
+            <select name="pantryName" id="pantryName">
+                <% pantry.forEach(function(pantry) { %>
+                    <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
+                <% }) %>
+            </select>
+            <input hidden type="text" name="ingredientName" value="<%= ingredient %>">
+            <button class="btn btn-primary" type="submit">Add to Pantry</button>
+        </form>
+    </div>    
 <% }) %>

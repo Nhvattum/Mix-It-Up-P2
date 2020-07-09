@@ -5,21 +5,40 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css"
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
         <title>Mix it Up</title>
     </head>
     <body>
         <header>
             <nav>
                 <% if (currentUser) { %>
-                    <a href="/auth/logout">Logout</a>
-                    <a href="/profile">Profile</a>
-                    <a href="/favorites">Favorites</a>
-                    <a href="/search">Search Cocktails</a>
-                    <a href="/ingredients">Ingredients</a>
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/favorites">Favorites</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/search">Search Cocktails</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ingredients">Ingredients</a>
+                        </li>
+                    </ul>
                 <% } else { %>
-                    <a href="/auth/register">Register</a>
-                    <a href="/auth/login">Login</a>
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/login">Login</a>
+                        </li>
+                    </ul>    
                 <% } %>
             </nav>
         </header>
