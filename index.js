@@ -86,7 +86,18 @@ app.get('/profile', isLoggedIn, function(req, res) {
 app.get('/search', function(req, res) {
     const byName = `https://www.thecocktaildb.com/api/json/v2/${key}/search.php?s=${req.query.search}`;
     
+    // function clone() {
+    //     let searchIngredient = document.getElementById("searchIngredient")
+    //     let clonedInput = searchIngredient.cloneNode(true)
+    //     clonedInput.id = "";
     
+    //     let searchContainer = document.getElementById("searchContainer")
+    //     searchContainer.appendChild(clonedInput)
+    // }
+    // let addBtn = document.getElementById("addIngredient")
+
+    // addBtn.addEventListener("click", clone)
+
     
     if (req.query.search) {
         axios.get(byName).then(function(res1) {
@@ -107,12 +118,10 @@ app.get('/search', function(req, res) {
         console.log(ingredientList, "🎭🎭🎭🎭🎭")
         axios.get(byIngredient).then(function(multiSearchResults) {
             console.log("🎯", multiSearchResults.data.drinks)
-            if (multiSearchResults.data.drinks == "None Found") {
-                req.flash('error', 'No cocktails found: Check spelling or try different ingredients')
-            } else {
-                res.render('search/search', {cocktail: multiSearchResults.data.drinks});
-            }
+
+            res.render('search/search', {cocktail: multiSearchResults.data.drinks});
             // res.send(search)
+
         }).catch(errorHandler);
     } else {
         let cocktail = [];
