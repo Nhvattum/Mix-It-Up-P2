@@ -4,7 +4,16 @@
 <div class="well">
     <form action="/search" method="GET" >
         <label for="filter">Search Cocktails:</label>
-        <input type="text" placeholder="Search" aria-label="Search" name="search">
+        <input type="text" placeholder="Cocktail" aria-label="Search" name="search">
+        <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
+    </form>
+</div>
+
+<div class="well">
+    <form action="/search" method="GET" >
+        <label for="filter">Search by Ingredients:</label>
+        <input type="text" placeholder="Ingredient" aria-label="Search" name="multiSearch">
+        <input type="text" placeholder="Ingredient" aria-label="Search" name="multiSearch">
         <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
     </form>
 </div>

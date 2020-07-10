@@ -85,12 +85,39 @@ app.get('/profile', isLoggedIn, function(req, res) {
 // SOURCE https://www.developintelligence.com/blog/2016/02/replace-spaces-underscores-javascript/
 app.get('/search', function(req, res) {
     const byName = `https://www.thecocktaildb.com/api/json/v2/${key}/search.php?s=${req.query.search}`;
-        
-    axios.get(byName).then(function(res1) {
-        // console.log(res1.data.drinks,'👅')
-        
-        res.render('search/search', {cocktail: res1.data.drinks});
-    }).catch(errorHandler);
+    
+    
+    
+    if (req.query.search) {
+        axios.get(byName).then(function(res1) {
+            // console.log(res1.data.drinks,'👅')
+            
+            res.render('search/search', {cocktail: res1.data.drinks});
+        }).catch(errorHandler);
+    } else if (req.query.multiSearch) {
+        let i = 0
+        let search = req.query.multiSearch;
+        console.log(search, "🇳🇴")
+        for(i; i < search.length; i++) {
+            search[i] = search[i].replace(" ", "_");
+        }
+        let ingredientList = search.join(",")
+        const byIngredient = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=${ingredientList}`;
+
+        console.log(ingredientList, "🎭🎭🎭🎭🎭")
+        axios.get(byIngredient).then(function(multiSearchResults) {
+            console.log("🎯", multiSearchResults.data.drinks)
+            if (multiSearchResults.data.drinks == "None Found") {
+                req.flash('error', 'No cocktails found: Check spelling or try different ingredients')
+            } else {
+                res.render('search/search', {cocktail: multiSearchResults.data.drinks});
+            }
+            // res.send(search)
+        }).catch(errorHandler);
+    } else {
+        let cocktail = [];
+        res.render('search/search', {cocktail})
+    }
 })
     
 // GET searchPantry
