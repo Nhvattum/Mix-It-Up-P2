@@ -9,15 +9,28 @@ body {
     font-family: ;
 } */
 
+div {
+    text-align: center;
+}
+
+img {
+    border-radius: 25px;
+}
+
+li {
+    text-align: center;
+}
+
 ul {
     list-style: none;
+    
 }
 
 #allIngredients {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    padding-left: 75px;
+    padding-left: 73px;
 }
 
 .eachIngredient {
