@@ -1,7 +1,9 @@
+
+
 <% details.forEach(function(details) { %>
     <div class="well">
         <p><%= details.strDrink %></p>
-        <img src="<%= details.strDrinkThumb %>">
+        <img class="searchImg" src="<%= details.strDrinkThumb %>">
         <p>You Will Need:</p>
         <ul>
             <% if (details.strIngredient1 || details.strMeasure1) { %> 

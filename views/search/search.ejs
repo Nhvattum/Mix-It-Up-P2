@@ -3,8 +3,10 @@
 
 <div class="well">
     <form action="/search" method="GET" >
-        <label for="filter">Search Cocktails:</label>
-        <input type="text" placeholder="Cocktail" aria-label="Search" name="search">
+        <div id="searchField">
+            <label for="filter">Search Cocktails:</label>
+            <input type="text" placeholder="Cocktail" aria-label="Search" name="search">
+        </div>
         <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
     </form>
 </div>
@@ -13,17 +15,19 @@
 
 <div id="searchContainer" class="well">
     <form action="/search" method="GET" >
-        <label for="filter">Search by Ingredients:</label>
-        <input type="text" id="searchIngredient" placeholder="Ingredient" aria-label="Search" name="multiSearch">
+        <div id="searchFields">
+            <label for="filter">Search by Ingredients:</label>
+            <input type="text" id="searchIngredient" placeholder="Ingredient" aria-label="Search" name="multiSearch">
+        </div>
+        <button class="btn btn-unique btn-rounded btn-sm my-0" id="submitBtn" type="submit">Search</button>
         <button class="btn btn-unique btn-rounded btn-sm my-0" id="addIngredient" onclick="clone(); return false;" >Add Another Ingredient</button>
-        <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
     </form>
 </div>
 
 <% if (cocktail) { %>
     <% cocktail.forEach(function(cocktail) { %>
         <div class="well">
-            <img src="<%= cocktail.strDrinkThumb %>">
+            <img class="searchImg" src="<%= cocktail.strDrinkThumb %>">
             <p><a href="/search/drinks/<%= cocktail.idDrink %>"> <%= cocktail.strDrink %> </a></p>
             <form method="POST" action="/favorites">
                 <input hidden type="text" name="cocktailId" value="<%= cocktail.idDrink %>">
@@ -35,12 +39,12 @@
 <% } %>   
 
 <script> function clone() { 
-    
      let searchIngredient = document.getElementById("searchIngredient") 
      let clonedInput = searchIngredient.cloneNode(true) 
      clonedInput.id = ""; 
-
-     let searchContainer = document.getElementById("searchContainer") 
-     searchContainer.appendChild(clonedInput) 
-     console.log("😆")
+     
+     let searchFields = document.getElementById("searchFields") 
+     let submitBtn = document.getElementById("submitBtn")
+ 
+     searchFields.appendChild(clonedInput)
  } </script>

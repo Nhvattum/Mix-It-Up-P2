@@ -1,21 +1,50 @@
 <!-- <% console.log(ingredient) %> -->
 <h3>Ingredients:</h3>
 
-<% ingredient.forEach(function(ingredient) { %>
-    <div class="well ingDiv">
-        <h3> <%= ingredient %> </h3>
-        <!-- <% console.log(ingredient +"🍿🍿🍿🍿🍿🍿🍿🍿🍿") %> -->
-        <img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-small.png">
-        
-        <form method="POST" action="/ingredients">
-            <label for="pantryName">Choose a Pantry:</label>
-            <select name="pantryName" id="pantryName">
-                <% pantry.forEach(function(pantry) { %>
-                    <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
-                <% }) %>
-            </select>
-            <input hidden type="text" name="ingredientName" value="<%= ingredient %>">
-            <button class="btn btn-primary" type="submit">Add to Pantry</button>
-        </form>
-    </div>    
-<% }) %>
+
+<input type="text" id="ingredientSearch" onkeyup="search" placeholder="Search for Ingredients">
+
+
+
+<ul id="allIngredients">
+    <% ingredient.forEach(function(ingredient) { %>
+        <li class="well eachIngredient">
+            <h3> <%= ingredient %> </h3>
+            <img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-small.png">
+            
+            <form method="POST" action="/ingredients">
+                <label for="pantryName">Choose a Pantry:</label>
+                <select name="pantryName" id="pantryName">
+                    <% pantry.forEach(function(pantry) { %>
+                        <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
+                    <% }) %>
+                </select>
+                <input hidden type="text" name="ingredientName" value="<%= ingredient %>">
+                <button class="btn btn-primary" type="submit">Add to Pantry</button>
+            </form>
+        </li>    
+    <% }) %>
+</ul>
+
+<script>
+    function search() {
+        let h3;
+        let i;
+        let txtValue;
+        let ingredientSearch = document.getElementById("ingredientSearch");
+        let filter = ingredientSearch.value.toUpperCase();
+        let allIngredients = document.getElementById("allIngredients");
+        let eachIngredient = document.getElementById("eachIngredient");
+
+        for (i = 0; i < eachIngredient.length; i++) {
+            h3 = eachIngredient[i].getElementsByTagName("h3")[0];
+            console.log("🎲", eachIngredient[0])
+            txtValue = h3.textContent || h3.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                eachIngredient[i].style.display = "";
+            } else {
+                eachIngredient[i].style.display = "none";
+            }
+        }
+    }
+</script>

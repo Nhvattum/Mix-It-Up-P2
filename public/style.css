@@ -3,8 +3,14 @@
     background-size: cover;
 } */
 
-.ingDiv {
+/* .ingDiv {
     width: 25%;
     height: 30%;
     text-align: center;
+} */
+
+.searchImg {
+    width: 25vw;
+    height: auto;
+    border-radius: 20px;
 }
