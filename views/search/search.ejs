@@ -24,7 +24,7 @@
     </form>
 </div>
 
-<% if (cocktail) { %>
+<% if (cocktail.length > 1 && typeof(cocktail) == "array") { %>
     <% cocktail.forEach(function(cocktail) { %>
         <div class="well">
             <img class="searchImg" src="<%= cocktail.strDrinkThumb %>">

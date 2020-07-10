@@ -26,7 +26,8 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.2.1",
-    "sequelize": "^6.2.3"
+    "sequelize": "^6.2.3",
+    "sequelize-cli": "^6.2.0"
   },
   "repository": {
     "type": "git",

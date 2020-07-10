@@ -3,17 +3,19 @@
 <h3>Your pantries:</h3>
 
 <% pantry.forEach(function(pantry) { %>
-    <div class="well">
+    <div class="form-group">
         <h3> <%= pantry.name.toUpperCase() %></h3>
         <br/>
         <% pantry.ingredients.forEach(function(ingredient) { %>
-            <h4> <%= ingredient.name %> </h4>
-                <span><img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png"></span>
-                <span><form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
-                    <input type="hidden" value="<%= pantry.id %>" name="pantryId">
-                    <input type="submit" value="Delete <%= ingredient.name %>">
-                </form></span>
-            <% }) %>
+            <div class="form-group">
+                <h4> <%= ingredient.name %> </h4>
+                    <span><img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png"></span>
+                    <span><form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
+                        <input type="hidden" value="<%= pantry.id %>" name="pantryId">
+                        <input type="submit" value="Delete <%= ingredient.name %>">
+                    </form></span>
+                <% }) %>
+            </div>    
         <form method="POST" action="/pantries/<%= pantry.name %>/?_method=DELETE">
             <input type="submit" value="Delete <%=pantry.name.toUpperCase() %>">
         </form>
@@ -22,7 +24,7 @@
 
 
 <form method="POST" action="/pantries">
-    <div class="form-group">
+    <div class="well">
         <label for="pantryId">Pantry Name</label>
         <input type="text" class="form-control" id="pantryId" name="pantryName">
         <button class="btn btn-primary" type="submit">Create New Pantry</button>

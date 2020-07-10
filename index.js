@@ -99,12 +99,19 @@ app.get('/search', function(req, res) {
         for(i; i < search.length; i++) {
             search[i] = search[i].replace(" ", "_");
         }
-        let ingredientList = search.join(",")
+        console.log(typeof(search), "👍")
+        let ingredientList
+        if (typeof(search) == "array") {
+            ingredientList = search.join(",")
+        } else {
+            ingredientList = search
+        }
+        console.log(ingredientList, "🍿")
         const byIngredient = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=${ingredientList}`;
 
         // console.log(ingredientList, "🎭🎭🎭🎭🎭")
         axios.get(byIngredient).then(function(multiSearchResults) {
-            // console.log("🎯", multiSearchResults.data.drinks)
+            console.log("🎯", multiSearchResults.data.drinks)
 
             res.render('search/search', {cocktail: multiSearchResults.data.drinks});
             // res.send(search)

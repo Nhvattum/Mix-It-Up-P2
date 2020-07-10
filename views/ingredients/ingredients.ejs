@@ -5,10 +5,9 @@
 <input type="text" id="ingredientSearch" onkeyup="search" placeholder="Search for Ingredients">
 
 
-
 <ul id="allIngredients">
     <% ingredient.forEach(function(ingredient) { %>
-        <li class="well eachIngredient">
+        <li class="eachIngredient">
             <h3> <%= ingredient %> </h3>
             <img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-small.png">
             
