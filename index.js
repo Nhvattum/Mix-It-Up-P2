@@ -85,20 +85,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
 // SOURCE https://www.developintelligence.com/blog/2016/02/replace-spaces-underscores-javascript/
 app.get('/search', function(req, res) {
     const byName = `https://www.thecocktaildb.com/api/json/v2/${key}/search.php?s=${req.query.search}`;
-    
-    // function clone() {
-    //     let searchIngredient = document.getElementById("searchIngredient")
-    //     let clonedInput = searchIngredient.cloneNode(true)
-    //     clonedInput.id = "";
-    
-    //     let searchContainer = document.getElementById("searchContainer")
-    //     searchContainer.appendChild(clonedInput)
-    // }
-    // let addBtn = document.getElementById("addIngredient")
 
-    // addBtn.addEventListener("click", clone)
-
-    
     if (req.query.search) {
         axios.get(byName).then(function(res1) {
             // console.log(res1.data.drinks,'👅')

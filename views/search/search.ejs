@@ -9,20 +9,13 @@
     </form>
 </div>
 
-<% function clone() { %>
-    <% let searchIngredient = document.getElementById("searchIngredient") %>
-    <% let clonedInput = searchIngredient.cloneNode(true) %>
-    <% clonedInput.id = ""; %>
 
-    <% let searchContainer = document.getElementById("searchContainer") %>
-    <% searchContainer.appendChild(clonedInput) %>
-<% } %>
 
 <div id="searchContainer" class="well">
     <form action="/search" method="GET" >
         <label for="filter">Search by Ingredients:</label>
         <input type="text" id="searchIngredient" placeholder="Ingredient" aria-label="Search" name="multiSearch">
-        <button class="btn btn-unique btn-rounded btn-sm my-0" id="addIngredient" onclick="clone()" >Add Another Ingredient</button>
+        <button class="btn btn-unique btn-rounded btn-sm my-0" id="addIngredient" onclick="clone(); return false;" >Add Another Ingredient</button>
         <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
     </form>
 </div>
@@ -40,3 +33,14 @@
         </div>
     <% }) %>
 <% } %>   
+
+<script> function clone() { 
+    
+     let searchIngredient = document.getElementById("searchIngredient") 
+     let clonedInput = searchIngredient.cloneNode(true) 
+     clonedInput.id = ""; 
+
+     let searchContainer = document.getElementById("searchContainer") 
+     searchContainer.appendChild(clonedInput) 
+     console.log("😆")
+ } </script>
