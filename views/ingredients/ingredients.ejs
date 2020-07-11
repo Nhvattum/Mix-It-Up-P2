@@ -2,7 +2,7 @@
 <h3>Ingredients:</h3>
 
 
-<input type="text" id="ingredientSearch" onkeyup="search" placeholder="Search for Ingredients">
+<input type="text" id="ingredientSearch" onkeyup="search()" placeholder="Search for Ingredients">
 
 
 <ul id="allIngredients">
@@ -13,7 +13,7 @@
             
             <form method="POST" action="/ingredients">
                 <label for="pantryName">Choose a Pantry:</label>
-                <select name="pantryName" id="pantryName">
+                <select name="pantryName">
                     <% pantry.forEach(function(pantry) { %>
                         <option value="<%= pantry.id %>"> <%= pantry.name.toUpperCase() %> </option>
                     <% }) %>
@@ -33,16 +33,16 @@
         let ingredientSearch = document.getElementById("ingredientSearch");
         let filter = ingredientSearch.value.toUpperCase();
         let allIngredients = document.getElementById("allIngredients");
-        let eachIngredient = document.getElementById("eachIngredient");
+        let li = allIngredients.getElementsByTagName(".li");
 
-        for (i = 0; i < eachIngredient.length; i++) {
-            h3 = eachIngredient[i].getElementsByTagName("h3")[0];
-            console.log("🎲", eachIngredient[0])
+        for (i = 0; i < li.length; i++) {
+            h3 = li[i].getElementsByTagName("h3")[0];
+            console.log("🎲", li[0])
             txtValue = h3.textContent || h3.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                eachIngredient[i].style.display = "";
+                li[i].style.display = "";
             } else {
-                eachIngredient[i].style.display = "none";
+                li[i].style.display = "none";
             }
         }
     }
