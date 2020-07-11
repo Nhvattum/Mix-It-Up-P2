@@ -9,7 +9,7 @@
     <% ingredient.forEach(function(ingredient) { %>
         <li class="eachIngredient">
             <h3> <%= ingredient %> </h3>
-            <img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-small.png">
+            <img class="ingredientImages" src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient%>-small.png">
             
             <form method="POST" action="/ingredients">
                 <label for="pantryName">Choose a Pantry:</label>

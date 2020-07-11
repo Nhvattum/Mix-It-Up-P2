@@ -9,7 +9,7 @@
         <% pantry.ingredients.forEach(function(ingredient) { %>
             <div class="form-group">
                 <h4> <%= ingredient.name %> </h4>
-                    <span><img src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png"></span>
+                    <span><img class="ingredientImages" src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png"></span>
                     <span><form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
                         <input type="hidden" value="<%= pantry.id %>" name="pantryId">
                         <input type="submit" value="Delete <%= ingredient.name %>">

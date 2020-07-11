@@ -24,7 +24,7 @@
     </form>
 </div>
 
-<% if (cocktail.length > 1 || typeof(cocktail) == "array") { %>
+<% if (Array.isArray(cocktail) && cocktail.length >= 1) { %>
     <% cocktail.forEach(function(cocktail) { %>
         <div class="form-group">
             <img class="searchImg" src="<%= cocktail.strDrinkThumb %>">
@@ -36,7 +36,10 @@
             </form>
         </div>
     <% }) %>
-<% } %>   
+<% } else if (Array.isArray(cocktail) && cocktail.length == 0){ %>
+<% } else { %>
+    <h3> There are no results for this entry.  Check your spelling and try again.</h3>
+<% } %>
 
 <script> function clone() { 
      let searchIngredient = document.getElementById("searchIngredient") 
