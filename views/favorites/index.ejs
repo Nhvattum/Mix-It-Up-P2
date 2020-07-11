@@ -1,11 +1,9 @@
 <h3>Your Favorite Cocktails</h3>
-<div class="well">
-    <ul>
+<div class="well favoriteDiv">
         <% fav.forEach(function(favorite) { %>
-            <li><a href="/favorites/<%= favorite.idDrink %>"><%= favorite.name %></a></li>
+            <h4><a href="/favorites/<%= favorite.idDrink %>"><%= favorite.name %></a></h4>
             <form method="POST" action="/favorites/<%= favorite.idDrink %>/?_method=DELETE">
                 <input type="submit" value="Delete <%=favorite.name %>">
             </form>
         <% }) %>
-    </ul>
 </div>

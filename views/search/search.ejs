@@ -1,7 +1,7 @@
   
 <h3>Search For Cocktails Here!</h3>
 
-<div class="well">
+<div class="well searchBox">
     <form action="/search" method="GET" >
         <div id="searchField">
             <label for="filter">Search Cocktails:</label>
@@ -13,7 +13,7 @@
 
 
 
-<div id="searchContainer" class="well">
+<div id="searchContainer" class="well searchBox">
     <form action="/search" method="GET" >
         <div id="searchFields">
             <label for="filter">Search by Ingredients:</label>
@@ -24,11 +24,11 @@
     </form>
 </div>
 
-<% if (cocktail.length > 1 && typeof(cocktail) == "array") { %>
+<% if (cocktail.length > 1 || typeof(cocktail) == "array") { %>
     <% cocktail.forEach(function(cocktail) { %>
-        <div class="well">
+        <div class="form-group">
             <img class="searchImg" src="<%= cocktail.strDrinkThumb %>">
-            <p><a href="/search/drinks/<%= cocktail.idDrink %>"> <%= cocktail.strDrink %> </a></p>
+            <h3><a href="/search/drinks/<%= cocktail.idDrink %>"> <%= cocktail.strDrink %> </a></h3>
             <form method="POST" action="/favorites">
                 <input hidden type="text" name="cocktailId" value="<%= cocktail.idDrink %>">
                 <input hidden type="text" name="cocktailName" value="<%= cocktail.strDrink %>">

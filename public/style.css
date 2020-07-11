@@ -2,9 +2,14 @@ body {
     background: no-repeat center center fixed;
     background-image: url("https://i.imgur.com/0wOC25S.jpg");
     background-size: cover;
-    text-align: center;
+    text-align: center
+    /* color: darkgray;
+    -webkit-text-stroke-width: .75px;
+    -webkit-text-stroke-color: rgb(53, 53, 53); */
 }
-
+ form.button {
+    color: black;
+ }
 /* h1 {
     font-family: ;
 } */
@@ -15,6 +20,7 @@ div {
 
 img {
     border-radius: 25px;
+    border: 1px solid black;
 }
 
 li {
@@ -23,7 +29,20 @@ li {
 
 ul {
     list-style: none;
-    
+}
+
+.favoriteDiv {
+    background:rgba(255,255,255,0.5);
+    border-radius: 5px;
+    border: .5px solid black;
+    display: inline-block;
+}
+
+.searchBox {
+    background:rgba(255,255,255,0.5);
+    border-radius: 5px;
+    border: 1px solid black;
+    display: inline-block;
 }
 
 #allIngredients {
