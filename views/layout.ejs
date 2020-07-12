@@ -6,50 +6,52 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap" rel="stylesheet">        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&display=swap" rel="stylesheet">        
+        <link rel="stylesheet" type="text/css" href="/style.css">
         <title>Mix it Up</title>
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <% if (currentUser) { %>
-                    <ul class="nav nav-pills nav-fill">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/auth/logout">Logout</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/favorites">Favorites</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/search">Search Cocktails</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ingredients">Ingredients</a>
-                        </li>
-                    </ul>
-                    <!-- <ul class="nav nav-pills nav-fill justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/auth/logout">Logout</a>
-                        </li>
-                    </ul> -->
-                <% } else { %>
-                    <ul class="nav nav-pills nav-fill">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/auth/register">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/auth/login">Login</a>
-                        </li>
-                    </ul>    
-                <% } %>
-            </nav>
-        </header>
+        <div class="whiteBar">
+            <header>
+                <img class="logo" src="images/mix_it_up_logo_2.png">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <% if (currentUser) { %>
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/auth/logout">Logout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/profile">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/favorites">Favorites</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/search">Search Cocktails</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ingredients">Ingredients</a>
+                            </li>
+                        </ul>
+                        <!-- <ul class="nav nav-pills nav-fill justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/auth/logout">Logout</a>
+                            </li>
+                        </ul> -->
+                        <% } else { %>
+                            <ul class="nav nav-pills nav-fill">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/auth/register">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/auth/login">Login</a>
+                                </li>
+                            </ul>    
+                            <% } %>
+                </nav>
+            </header>
+        </div>
         <div class="container">
-            <img src="images/mix_it_up_logo.png">
-        </br></br>
             <!-- <h1 class="newColor"> 🍸🍹 Mix it Up 🍹🍸</h1>    -->
             <%- include('./partials/alerts') %>
             <%- body %>

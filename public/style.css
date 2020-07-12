@@ -1,21 +1,39 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.logo{
+    margin-top: 20px;
+}
+
+.nav,a {
+color: black;
+}
+
+header {
+    padding-bottom: 0px;
+    background:rgba(255,255,255,0.5);
+}
+
 body {
     background: no-repeat center center fixed;
     background-image: url("https://i.imgur.com/0wOC25S.jpg");
     background-size: cover;
     text-align: center;
-    font-family: 'Dosis', sans-serif;
+    font-family: 'PT Sans Narrow', sans-serif;
     /* color: darkgray;
     -webkit-text-stroke-width: .75px;
     -webkit-text-stroke-color: rgb(53, 53, 53); */
 }
 
 .newColor {
-    color: rgb(53, 53, 53);
+    color: black;
+    /* color: rgb(53, 53, 53);
     -webkit-text-stroke-width: .8px;
-    -webkit-text-stroke-color: rgb(255,255,255);
+    -webkit-text-stroke-color: rgb(255,255,255); */
 }
-
-
 
 div {
     text-align: center;
@@ -24,6 +42,10 @@ div {
 img {
     border-radius: 25px;
     border: 1px solid black;
+}
+
+.logo {
+    border: none;
 }
 
 .ingredientImages {
