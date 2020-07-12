@@ -32,8 +32,9 @@
             <form method="POST" action="/favorites">
                 <input hidden type="text" name="cocktailId" value="<%= cocktail.idDrink %>">
                 <input hidden type="text" name="cocktailName" value="<%= cocktail.strDrink %>">
-                <button class="btn btn-primary" type="submit">Add to Favorites List</button>
+                <button class="btn btn-unique btn-rounded" type="submit">Add to Favorites List</button>
             </form>
+        </br></br>
         </div>
     <% }) %>
 <% } else if (Array.isArray(cocktail) && cocktail.length == 0){ %>

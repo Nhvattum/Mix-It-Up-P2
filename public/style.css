@@ -19,20 +19,22 @@ header {
 
 body {
     background: no-repeat center center fixed;
-    background-image: url("https://i.imgur.com/0wOC25S.jpg");
+    background-image: url("../images/background.jpg");
     background-size: cover;
     text-align: center;
     font-family: 'PT Sans Narrow', sans-serif;
-    /* color: darkgray;
-    -webkit-text-stroke-width: .75px;
-    -webkit-text-stroke-color: rgb(53, 53, 53); */
+    color: black;
 }
 
 .newColor {
-    color: black;
+    color: rgb(121, 108, 103);
     /* color: rgb(53, 53, 53);
     -webkit-text-stroke-width: .8px;
     -webkit-text-stroke-color: rgb(255,255,255); */
+}
+
+.ingredientName {
+    text-decoration: underline;
 }
 
 div {
@@ -65,6 +67,20 @@ ul {
     border-radius: 5px;
     border: none;
     display: inline-block;
+    width: 25%;
+}
+
+.pantryDiv {
+    background:rgba(255,255,255,0.5);
+    border-radius: 5px;
+    border: none;
+    width: 45%; 
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.newPantry {
+    margin-bottom: 50px;
 }
 
 .searchBox {
@@ -72,6 +88,15 @@ ul {
     border-radius: 5px;
     border: 1px solid black;
     display: inline-block;
+}
+
+.searchResults {
+    background:rgba(255,255,255,0.5);
+    border-radius: 25px;
+    border: none;
+    width: 25vw; 
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 #allIngredients {

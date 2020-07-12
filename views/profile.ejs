@@ -1,32 +1,30 @@
-<h2 class="newColor">Hi <%= currentUser.name %>. Welcome to the app!</h2>
+<h1 class="newColor">Hi <%= currentUser.name %>. Create and view your pantries below!</h1>
 
-<h3 class="newColor">Your pantries:</h3>
+<h1 class="newColor">Your pantries:</h1>
 
 <% pantry.forEach(function(pantry) { %>
-    <div class="form-group">
-        <h3 class="newColor"> <%= pantry.name.toUpperCase() %></h3>
-        <br/>
-        <% pantry.ingredients.forEach(function(ingredient) { %>
-            <div class="form-group">
-                <h4 class="newColor"> <%= ingredient.name %> </h4>
-                    <span><img class="ingredientImages" src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png"></span>
-                    <span><form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
-                        <input type="hidden" value="<%= pantry.id %>" name="pantryId">
-                        <input type="submit" value="Delete <%= ingredient.name %>">
-                    </form></span>
-                <% }) %>
-            </div>    
+    <div class="well pantryDiv">
+        <h1 class="newColor"> <%= pantry.name.toUpperCase() %></h1>
         <form method="POST" action="/pantries/<%= pantry.name %>/?_method=DELETE">
             <input type="submit" value="Delete <%=pantry.name.toUpperCase() %>">
         </form>
+        </br>
+        <% pantry.ingredients.forEach(function(ingredient) { %>
+                <h3 class="newColor ingredientName"> <%= ingredient.name %> </h3>
+                    <img class="ingredientImages" src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png">
+                    <form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
+                        <input type="hidden" value="<%= pantry.id %>" name="pantryId">
+                        <input type="submit" value="Delete <%= ingredient.name %>">
+                    </form>
+                <% }) %>
     </div>
 <% }) %>
 
 
 <form method="POST" action="/pantries">
-    <div class="well">
-        <label for="pantryId">Pantry Name</label>
-        <input type="text" class="form-control" id="pantryId" name="pantryName">
-        <button class="btn btn-primary" type="submit">Create New Pantry</button>
-    </div>
+    <h3 class="newColor">Create a New Pantry</h3>
+    <input type="text" class="form-control" id="pantryId" placeholder="Pantry Name" name="pantryName">
+    </br>
+    <button type="submit" class="newPantry">Create New Pantry</button>
 </form>
+
