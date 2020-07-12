@@ -6,7 +6,7 @@
     <div class="well pantryDiv">
         <h1 class="newColor"> <%= pantry.name.toUpperCase() %></h1>
         <form method="POST" action="/pantries/<%= pantry.name %>/?_method=DELETE">
-            <input type="submit" value="Delete <%=pantry.name.toUpperCase() %>">
+            <input class="btn btn-unique btn-rounded" type="submit" value="Delete <%=pantry.name.toUpperCase() %>">
         </form>
         </br>
         <% pantry.ingredients.forEach(function(ingredient) { %>
@@ -14,7 +14,7 @@
                     <img class="ingredientImages" src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png">
                     <form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
                         <input type="hidden" value="<%= pantry.id %>" name="pantryId">
-                        <input type="submit" value="Delete <%= ingredient.name %>">
+                        <input class="btn btn-unique btn-rounded" type="submit" value="Delete <%= ingredient.name %>">
                     </form>
                 <% }) %>
     </div>
@@ -25,6 +25,6 @@
     <h3 class="newColor">Create a New Pantry</h3>
     <input type="text" class="form-control" id="pantryId" placeholder="Pantry Name" name="pantryName">
     </br>
-    <button type="submit" class="newPantry">Create New Pantry</button>
+    <button class="btn btn-unique btn-rounded" type="submit" class="newPantry">Create New Pantry</button>
 </form>
 
