@@ -2,16 +2,17 @@ body {
     background: no-repeat center center fixed;
     background-image: url("https://i.imgur.com/0wOC25S.jpg");
     background-size: cover;
-    text-align: center
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
     /* color: darkgray;
     -webkit-text-stroke-width: .75px;
     -webkit-text-stroke-color: rgb(53, 53, 53); */
 }
 
 .newColor {
-    color: rgb(255,255,255);
+    color: rgb(53, 53, 53);
     -webkit-text-stroke-width: .8px;
-    -webkit-text-stroke-color: rgb(53, 53, 53);
+    -webkit-text-stroke-color: rgb(255,255,255);
 }
 
 
@@ -65,6 +66,7 @@ ul {
     text-align: center;
     background:rgba(255,255,255,0.5);
     border-radius: 25px;
+    padding-bottom: 10px;
 }
 
 .searchImg {
