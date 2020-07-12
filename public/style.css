@@ -6,6 +6,8 @@
 
 .logo {
     margin-top: 20px;
+    border: none;
+    max-width: 100%;
 }
 
 .nav,a {
@@ -19,7 +21,12 @@ header {
 
 body {
     background: no-repeat center center fixed;
-    background-image: url("../images/background.jpg");
+    background-image: 
+        linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ),
+        url("../images/background.jpg");
     background-size: cover;
     text-align: center;
     font-family: 'PT Sans Narrow', sans-serif;
@@ -27,10 +34,16 @@ body {
 }
 
 .newColor {
-    color: rgb(121, 108, 103);
-    /* color: rgb(53, 53, 53);
-    -webkit-text-stroke-width: .8px;
-    -webkit-text-stroke-color: rgb(255,255,255); */
+    /* color: rgb(121, 108, 103); */
+    color: white;
+}
+
+h1{
+    text-decoration: underline;
+}
+
+.welcomeMessage {
+    text-decoration: none;
 }
 
 .ingredientName {
@@ -44,10 +57,6 @@ div {
 img {
     border-radius: 25px;
     border: 1px solid black;
-}
-
-.logo {
-    border: none;
 }
 
 .ingredientImages {
