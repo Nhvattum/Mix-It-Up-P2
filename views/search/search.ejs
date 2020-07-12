@@ -1,5 +1,5 @@
   
-<h3 class="newColor">Search For Cocktails Here!</h3>
+<h1 class="newColor">Search For Cocktails Here!</h1>
 
 <div class="well searchBox">
     <form action="/search" method="GET" >
@@ -26,15 +26,18 @@
 
 <% if (Array.isArray(cocktail) && cocktail.length >= 1) { %>
     <% cocktail.forEach(function(cocktail) { %>
-        <div class="form-group">
+        <div class="pantryDiv">
+            </br>
+            <h2><a class="ingredientName" href="/search/drinks/<%= cocktail.idDrink %>"> <%= cocktail.strDrink %> </a></h2>
             <a href="/search/drinks/<%= cocktail.idDrink %>"><img class="searchImg" src="<%= cocktail.strDrinkThumb %>"></a>
-            <h3><a class="newColor" href="/search/drinks/<%= cocktail.idDrink %>"> <%= cocktail.strDrink %> </a></h3>
+            </br>
             <form method="POST" action="/favorites">
                 <input hidden type="text" name="cocktailId" value="<%= cocktail.idDrink %>">
                 <input hidden type="text" name="cocktailName" value="<%= cocktail.strDrink %>">
+                </br>
                 <button class="btn btn-unique btn-rounded" type="submit">Add to Favorites List</button>
             </form>
-        </br></br>
+        </br>
         </div>
     <% }) %>
 <% } else if (Array.isArray(cocktail) && cocktail.length == 0){ %>

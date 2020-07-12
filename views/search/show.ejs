@@ -1,11 +1,12 @@
 
 
 <% details.forEach(function(details) { %>
-    <div class="form-group">
-        <h3 class="newColor"><%= details.strDrink %></h3>
+    <div class="pantryDiv">
+        </br>
+        <h2 class="ingredientName"><%= details.strDrink %></h2>
         <img class="searchImg" src="<%= details.strDrinkThumb %>">
-        <div class="form-group recipe">
-            <h4>You Will Need:</h4>
+        <div class="recipe">
+            <h3>You Will Need:</h3>
             <ul class="showUl">
                 <% if (details.strIngredient1 || details.strMeasure1) { %> 
                     <li><%= details.strIngredient1 %> - <%= details.strMeasure1 %></li>
@@ -67,7 +68,7 @@
                     <li><%= details.strIngredient15 %> - <%= details.strMeasure15 %></li>
                 <% } %>
             </ul>
-            <h4>Instructions:</p>
+            <h3>Instructions:</h3>
             <p class="instructions"><%= details.strInstructions %></p>
         </div>
     </div>

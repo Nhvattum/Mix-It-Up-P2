@@ -1,9 +1,10 @@
 <% console.log(details[0]) %>
-<div class="form-group">
-    <h3 class="newColor"><%= details[0].strDrink %></h3>
+<div class="pantryDiv">
+</br>
+    <h2 class="ingredientName"><%= details[0].strDrink %></h2>
     <img class="searchImg" src="<%= details[0].strDrinkThumb %>">
-    <div class="form-group recipe">
-        <h4>You Will Need:</h4>
+    <div class="recipe">
+        <h3>You Will Need:</h3>
         <ul class="showUl">
             <% if (details[0].strIngredient1 || details[0].strMeasure1) { %> 
                 <li><%= details[0].strIngredient1 %> - <%= details[0].strMeasure1 %></li>
@@ -65,7 +66,7 @@
                 <li><%= details[0].strIngredient15 %> - <%= details[0].strMeasure15 %></li>
             <% } %>
         </ul>
-        <h4>Instructions:</h4>
+        <h3>Instructions:</h3>
         <p><%= details[0].strInstructions %></p>
     </div>
 </div>

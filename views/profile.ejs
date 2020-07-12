@@ -4,13 +4,13 @@
 
 <% pantry.forEach(function(pantry) { %>
     <div class="well pantryDiv">
-        <h1 class="newColor"> <%= pantry.name.toUpperCase() %></h1>
+        <h1> <%= pantry.name.toUpperCase() %></h1>
         <form method="POST" action="/pantries/<%= pantry.name %>/?_method=DELETE">
             <input class="btn btn-unique btn-rounded" type="submit" value="Delete <%=pantry.name.toUpperCase() %>">
         </form>
         </br>
         <% pantry.ingredients.forEach(function(ingredient) { %>
-                <h3 class="newColor ingredientName"> <%= ingredient.name %> </h3>
+                <h3 class="ingredientName"> <%= ingredient.name %> </h3>
                     <img class="ingredientImages" src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png">
                     <form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
                         <input type="hidden" value="<%= pantry.id %>" name="pantryId">
