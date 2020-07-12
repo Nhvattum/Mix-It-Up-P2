@@ -1,14 +1,14 @@
-<h2>Hi <%= currentUser.name %>. Welcome to the app!</h2>
+<h2 class="newColor">Hi <%= currentUser.name %>. Welcome to the app!</h2>
 
-<h3>Your pantries:</h3>
+<h3 class="newColor">Your pantries:</h3>
 
 <% pantry.forEach(function(pantry) { %>
     <div class="form-group">
-        <h3> <%= pantry.name.toUpperCase() %></h3>
+        <h3 class="newColor"> <%= pantry.name.toUpperCase() %></h3>
         <br/>
         <% pantry.ingredients.forEach(function(ingredient) { %>
             <div class="form-group">
-                <h4> <%= ingredient.name %> </h4>
+                <h4 class="newColor"> <%= ingredient.name %> </h4>
                     <span><img class="ingredientImages" src="https://www.thecocktaildb.com/images/ingredients/<%=ingredient.name%>-Medium.png"></span>
                     <span><form method="POST" action="/ingredients/<%= ingredient.name %>/?_method=DELETE">
                         <input type="hidden" value="<%= pantry.id %>" name="pantryId">

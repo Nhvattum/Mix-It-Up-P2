@@ -1,69 +1,71 @@
 <% console.log(details[0]) %>
+<div class="form-group">
+    <h3 class="newColor"><%= details[0].strDrink %></h3>
+    <img class="searchImg" src="<%= details[0].strDrinkThumb %>">
+    <div class="form-group recipe">
+        <h4>You Will Need:</h4>
+        <ul class="showUl">
+            <% if (details[0].strIngredient1 || details[0].strMeasure1) { %> 
+                <li><%= details[0].strIngredient1 %> - <%= details[0].strMeasure1 %></li>
+            <% } %>
 
-    <p><%= details[0].strDrink %></p>
-    <img src="<%= details[0].strDrinkThumb %>">
-    <p>You Will Need:</p>
-    <ul>
-        <% if (details[0].strIngredient1 || details[0].strMeasure1) { %> 
-            <li><%= details[0].strIngredient1 %> - <%= details[0].strMeasure1 %></li>
-        <% } %>
+            <% if (details[0].strIngredient2 || details[0].strMeasure2) { %> 
+                <li><%= details[0].strIngredient2 %> - <%= details[0].strMeasure2 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient3 || details[0].strMeasure3) { %> 
+                <li><%= details[0].strIngredient3 %> - <%= details[0].strMeasure3 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient4 || details[0].strMeasure4) { %> 
+                <li><%= details[0].strIngredient4 %> - <%= details[0].strMeasure4 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient5 || details[0].strMeasure5) { %> 
+                <li><%= details[0].strIngredient5 %> - <%= details[0].strMeasure5 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient6 || details[0].strMeasure6) { %> 
+                <li><%= details[0].strIngredient6 %> - <%= details[0].strMeasure6 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient7 || details[0].strMeasure7) { %> 
+                <li><%= details[0].strIngredient7 %> - <%= details[0].strMeasure7 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient8 || details[0].strMeasure8) { %> 
+                <li><%= details[0].strIngredient8 %> - <%= details[0].strMeasure8 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient9 || details[0].strMeasure9) { %> 
+                <li><%= details[0].strIngredient9 %> - <%= details[0].strMeasure9 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient10 || details[0].strMeasure10) { %> 
+                <li><%= details[0].strIngredient10 %> - <%= details[0].strMeasure10 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient11 || details[0].strMeasure11) { %> 
+                <li><%= details[0].strIngredient11 %> - <%= details[0].strMeasure11 %></li>
+            <% } %>
+            
+            <% if (details[0].strIngredient12 || details[0].strMeasure12) { %> 
+                <li><%= details[0].strIngredient12 %> - <%= details[0].strMeasure12 %></li>
+            <% } %>
 
-        <% if (details[0].strIngredient2 || details[0].strMeasure2) { %> 
-            <li><%= details[0].strIngredient2 %> - <%= details[0].strMeasure2 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient3 || details[0].strMeasure3) { %> 
-            <li><%= details[0].strIngredient3 %> - <%= details[0].strMeasure3 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient4 || details[0].strMeasure4) { %> 
-            <li><%= details[0].strIngredient4 %> - <%= details[0].strMeasure4 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient5 || details[0].strMeasure5) { %> 
-            <li><%= details[0].strIngredient5 %> - <%= details[0].strMeasure5 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient6 || details[0].strMeasure6) { %> 
-            <li><%= details[0].strIngredient6 %> - <%= details[0].strMeasure6 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient7 || details[0].strMeasure7) { %> 
-            <li><%= details[0].strIngredient7 %> - <%= details[0].strMeasure7 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient8 || details[0].strMeasure8) { %> 
-            <li><%= details[0].strIngredient8 %> - <%= details[0].strMeasure8 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient9 || details[0].strMeasure9) { %> 
-            <li><%= details[0].strIngredient9 %> - <%= details[0].strMeasure9 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient10 || details[0].strMeasure10) { %> 
-            <li><%= details[0].strIngredient10 %> - <%= details[0].strMeasure10 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient11 || details[0].strMeasure11) { %> 
-            <li><%= details[0].strIngredient11 %> - <%= details[0].strMeasure11 %></li>
-        <% } %>
-        
-        <% if (details[0].strIngredient12 || details[0].strMeasure12) { %> 
-            <li><%= details[0].strIngredient12 %> - <%= details[0].strMeasure12 %></li>
-        <% } %>
+            <% if (details[0].strIngredient13 || details[0].strMeasure13) { %> 
+                <li><%= details[0].strIngredient13 %> - <%= details[0].strMeasure13 %></li>
+            <% } %>
 
-        <% if (details[0].strIngredient13 || details[0].strMeasure13) { %> 
-            <li><%= details[0].strIngredient13 %> - <%= details[0].strMeasure13 %></li>
-        <% } %>
+            <% if (details[0].strIngredient14 || details[0].strMeasure14) { %> 
+                <li><%= details[0].strIngredient14 %> - <%= details[0].strMeasure14 %></li>
+            <% } %>
 
-        <% if (details[0].strIngredient14 || details[0].strMeasure14) { %> 
-            <li><%= details[0].strIngredient14 %> - <%= details[0].strMeasure14 %></li>
-        <% } %>
-
-        <% if (details[0].strIngredient15 || details[0].strMeasure15) { %> 
-            <li><%= details[0].strIngredient15 %> - <%= details[0].strMeasure15 %></li>
-        <% } %>
-    </ul>
-    <p>Instructions:</p>
-    <p><%= details[0].strInstructions %></p>
+            <% if (details[0].strIngredient15 || details[0].strMeasure15) { %> 
+                <li><%= details[0].strIngredient15 %> - <%= details[0].strMeasure15 %></li>
+            <% } %>
+        </ul>
+        <h4>Instructions:</h4>
+        <p><%= details[0].strInstructions %></p>
+    </div>
 </div>

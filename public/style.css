@@ -7,12 +7,14 @@ body {
     -webkit-text-stroke-width: .75px;
     -webkit-text-stroke-color: rgb(53, 53, 53); */
 }
- form.button {
-    color: black;
- }
-/* h1 {
-    font-family: ;
-} */
+
+.newColor {
+    color: rgb(255,255,255);
+    -webkit-text-stroke-width: .8px;
+    -webkit-text-stroke-color: rgb(53, 53, 53);
+}
+
+
 
 div {
     text-align: center;
@@ -71,10 +73,14 @@ ul {
     border-radius: 25px;
 }
 
-.form-group {
-    text-align: center;
+.showUl,li {
+    padding: 0;
 }
 
-.well {
-    text-align: center;
+.recipe {
+    width: 25vw;
+    height: auto;
+    margin: 0 auto;
+    background:rgba(255,255,255,0.5);
+    border-radius: 25px;
 }
