@@ -1,7 +1,7 @@
 <h1 class="newColor">Your Favorite Cocktails</h1>
-<div class="well favoriteDiv">
+<div class="well pantryDiv">
         <% fav.forEach(function(favorite) { %>
-            <h4><a href="/favorites/<%= favorite.idDrink %>"><%= favorite.name %></a></h4>
+            <h2><a href="/favorites/<%= favorite.idDrink %>"><%= favorite.name %></a></h2>
             <form method="POST" action="/favorites/<%= favorite.idDrink %>/?_method=DELETE">
                 <input class="btn btn-unique btn-rounded" type="submit" value="Delete <%=favorite.name %>">
             </br></br>

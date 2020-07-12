@@ -7,12 +7,15 @@
 .logo {
     margin-top: 20px;
     border: none;
-    max-width: 100%;
+    width: 52vw;
+    height: auto;
+    
 }
 
 .nav,a {
 color: black;
 }
+
 
 header {
     padding-bottom: 0px;
@@ -97,15 +100,7 @@ ul {
     border-radius: 5px;
     border: 1px solid black;
     display: inline-block;
-}
-
-.searchResults {
-    background:rgba(255,255,255,0.5);
-    border-radius: 25px;
-    border: none;
-    width: 25vw; 
-    margin: auto;
-    margin-bottom: 30px;
+    max-width: 33vw;
 }
 
 #allIngredients {
@@ -129,6 +124,10 @@ ul {
     width: 25vw;
     height: auto;
     border-radius: 25px;
+}
+
+.pantryImage {
+    border: none;
 }
 
 .showUl,li {
