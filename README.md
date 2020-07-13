@@ -11,13 +11,13 @@
 - As a user, I want to be able to search for recipes that ONLY use ingredients that I currently have so I know that I will be able to make whatever shows up
 
 ## Models and Relationships
-![Relationships](images/models_and_relationships.png)
+![Relationships](/public/images/models_and_relationships.png)
 
 ## Wireframe
-![Homepage Wireframe](images/homepage_wireframe.png)
+![Homepage Wireframe](/public/images/homepage_wireframe.png)
 
 ## Routes
-![Routes] (images/routes.png)
+![Routes] (/public/images/routes.png)
 
 ## Technology Used
 This app was made primarily with JavaScript, HTML, and CSS. The dependencies in this app are:
@@ -42,6 +42,7 @@ This app was made primarily with JavaScript, HTML, and CSS. The dependencies in 
 - "sequelize-cli": "^6.2.0"
 
 ## Sources
+- This app is based off of the TheCocktailDB API
 - The background image came from https://unsplash.com/photos/8UzQG534Rm8. It was posted by Marc-Olivier Paquin (@marco_blackboulevard).
 - I learned the code necessary to create a new input on my search page from http://help.dottoro.com/ljxqnpcv.php. The original code was for how to clone a table, but I was able to adapt the code for my needs, and I learned how to do it for myself in the future.
 
