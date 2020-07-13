@@ -15,10 +15,7 @@
 
 ## Wireframe
 ![Homepage Wireframe](/public/images/homepage_wireframe.png)
-<<<<<<< HEAD
 
-## Routes
-![Routes] (/public/images/routes.png)
 =======
 >>>>>>> c49461b63ed66f37ee10370f8ccce383081c8e86
 
