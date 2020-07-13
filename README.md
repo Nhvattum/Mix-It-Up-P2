@@ -11,7 +11,7 @@
 - As a user, I want to be able to search for recipes that ONLY use ingredients that I currently have so I know that I will be able to make whatever shows up
 
 ## Models and Relationships
-![Relationships](public/images/models_and_relationships.png)
+![Relationships](/public/images/models_and_relationships.png)
 
 ## Wireframe
 ![Homepage Wireframe](/public/images/homepage_wireframe.png)
