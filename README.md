@@ -16,8 +16,8 @@
 ## Wireframe
 ![Homepage Wireframe](/public/images/homepage_wireframe.png)
 
-=======
->>>>>>> c49461b63ed66f37ee10370f8ccce383081c8e86
+## Routes
+![Routes] (/public/images/routes.png)
 
 ## Technology Used
 This app was made primarily with JavaScript, HTML, and CSS. The dependencies in this app are:
