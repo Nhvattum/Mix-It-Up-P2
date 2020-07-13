@@ -63,7 +63,6 @@ app.get('/', function(req, res) {
     const randomCocktail = `https://www.thecocktaildb.com/api/json/v2/${key}/random.php`;
 
     axios.get(randomCocktail).then(function(response) {
-        // console.log(response)
         
     res.render('index', {random: response.data.drinks});
     })
@@ -75,8 +74,6 @@ app.get('/profile', isLoggedIn, function(req, res) {
         where: {userId: req.user.id},
         include: [db.ingredient]
     }).then(function(pantry) { 
-        // console.log(pantry[2].ingredients, "☕️🐋")       
-        // console.log('found: 😓', pantry)
         res.render('profile', {pantry: pantry})
     }).catch(errorHandler)
 })
@@ -88,18 +85,15 @@ app.get('/search', function(req, res) {
 
     if (req.query.search) {
         axios.get(byName).then(function(res1) {
-            // console.log(res1.data.drinks,'👅')
             
             res.render('search/search', {cocktail: res1.data.drinks});
         }).catch(errorHandler);
     } else if (req.query.multiSearch) {
         let i = 0
         let search = req.query.multiSearch;
-        // console.log(search, "🇳🇴")
         for(i; i < search.length; i++) {
             search[i] = search[i].replace(" ", "_");
         }
-        console.log(typeof(search), "👍")
         let ingredientList
         if (typeof(search) == "array") {
             ingredientList = search.join(",")
@@ -109,12 +103,8 @@ app.get('/search', function(req, res) {
         console.log(ingredientList, "🍿")
         const byIngredient = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=${ingredientList}`;
 
-        // console.log(ingredientList, "🎭🎭🎭🎭🎭")
         axios.get(byIngredient).then(function(multiSearchResults) {
-            console.log("🎯", multiSearchResults.data.drinks)
-
             res.render('search/search', {cocktail: multiSearchResults.data.drinks});
-            // res.send(search)
 
         }).catch(errorHandler);
     } else {
@@ -134,8 +124,6 @@ app.get('/search/pantry', function(req, res) {
         
         let ingredientList = search.join(",");
         
-        console.log(ingredientList, "🎭🎭🎭🎭🎭")
-        
         const byPantry = `https://www.thecocktaildb.com/api/json/v2/${key}/filter.php?i=${ingredientList}`;
         db.pantry.findAll({
         where: {userId: req.user.id},
@@ -143,10 +131,7 @@ app.get('/search/pantry', function(req, res) {
 
         }).then(function(pantry){
             axios.get(byPantry).then(function(res2) {
-                // console.log("🎉🎉🎉🎉🎉🎉🎉🎉")
-                console.log("backend list 🚜🚜🚜🚜🚜🚜", res2.data.drinks)
                 res.render('pantries/searchPantry', {pantry, pantryCocktail: res2.data.drinks});
-                // res.send(pantry)
             })
         }).catch(errorHandler)
     } else {
@@ -154,10 +139,8 @@ app.get('/search/pantry', function(req, res) {
             where: {userId: req.user.id},
             include: [db.ingredient]
         }).then(function(pantry){
-                // console.log(res2.data.drinks[0].strDrink + "🎉🎉🎉🎉🎉🎉🎉🎉")
                 let pantryCocktail = [];
                 res.render('pantries/searchPantry', {pantry, pantryCocktail});
-                // res.send(pantry)
         
         }).catch(errorHandler)
     }
@@ -168,18 +151,13 @@ app.get('/search/pantry', function(req, res) {
 app.get('/search/drinks/:id', function(req, res) {
     const byId = `https://www.thecocktaildb.com/api/json/v2/${key}/lookup.php?i=${req.params.id}`;
         
-    axios.get(byId).then(function(res2) {
-        // console.log(res2.data.drinks,'👅')
-        // let details = res2.data.drinks
-        
+    axios.get(byId).then(function(res2) { 
     res.render('search/show', {details: res2.data.drinks});
     }).catch(errorHandler);
 })
 
 // POST to favorites
 app.post('/favorites', function(req, res) {
-    // console.log(req.body.cocktailId + "🚀")
-    // console.log(req.body.cocktailName + "😆")
 
     db.favorite.findOrCreate({
         where: {
@@ -189,7 +167,6 @@ app.post('/favorites', function(req, res) {
         }
     }).then(([favorite, created]) => {
         res.redirect('favorites')
-        // console.log(`🐶 ${favorite.name} was ${created ? 'created👍' : 'found🔎'}`)
     }).catch(errorHandler);
 })
 
