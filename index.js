@@ -114,6 +114,7 @@ app.get('/search', function(req, res) {
 })
     
 // GET searchPantry
+// not currently in use
 app.get('/search/pantry', function(req, res) {
     if (req.query.ingredientName) {
         let i = 0
@@ -170,7 +171,7 @@ app.post('/favorites', function(req, res) {
     }).catch(errorHandler);
 })
 
-// DELETE a pantry
+// DELETE a favorited recipe
 app.delete('/favorites/:idDrink', function(req, res) {
     db.favorite.destroy({
         where: {
@@ -291,8 +292,6 @@ app.post('/ingredients', function(req, res) {
 
 // include auth controller
 app.use('/auth', require('./controllers/auth'));
-
-// app.use('/search', require('./controllers/search'));
 
 
 // initialise app on Port

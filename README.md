@@ -16,6 +16,9 @@
 ## Wireframe
 ![Homepage Wireframe](images/homepage_wireframe.png)
 
+## Routes
+![Routes] (images/routes.png)
+
 ## Technology Used
 This app was made primarily with JavaScript, HTML, and CSS. The dependencies in this app are:
 - "axios": "^0.19.2",
