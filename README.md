@@ -11,10 +11,10 @@
 - As a user, I want to be able to search for recipes that ONLY use ingredients that I currently have so I know that I will be able to make whatever shows up
 
 ## Models and Relationships
-![Relationships](images/models_and_relationships.png)
+![Relationships](/images/models_and_relationships.png)
 
 ## Wireframe
-![Homepage Wireframe](images/homepage_wireframe.png)
+![Homepage Wireframe](/images/homepage_wireframe.png)
 
 ## Technology Used
 This app was made primarily with JavaScript, HTML, and CSS. The dependencies in this app are:
